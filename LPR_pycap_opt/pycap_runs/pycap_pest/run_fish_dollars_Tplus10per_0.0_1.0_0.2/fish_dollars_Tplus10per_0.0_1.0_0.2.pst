@@ -1,0 +1,24 @@
+pcf version=2
+* control data keyword
+pestmode                                 estimation
+noptmax                                50
+svdmode                                 1
+maxsing                          10000000
+eigthresh                           1e-06
+eigwrite                                1
+mou_dv_population_file         initial_dvpop.csv
+mou_objectives                 ag_receipts,fish_prob
+mou_population_size            26
+mou_save_population_every      1
+* parameter groups external
+fish_dollars_tplus10per_0.0_1.0_0.2.pargp_data.csv
+* parameter data external
+fish_dollars_tplus10per_0.0_1.0_0.2.par_data.csv
+* observation data external
+fish_dollars_tplus10per_0.0_1.0_0.2.obs_data.csv
+* model command line
+python run_pycap_standalone_opt_mou_fish_dollars.py fish_dollars_Tplus10per_0.0_1.0_0.2
+* model input external
+fish_dollars_tplus10per_0.0_1.0_0.2.tplfile_data.csv
+* model output external
+fish_dollars_tplus10per_0.0_1.0_0.2.insfile_data.csv
