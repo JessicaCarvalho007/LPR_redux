@@ -1,8 +1,8 @@
 project_properties:
   name: LPR_Redux
-  T: 1870.0
-  Max_T: 66000.0
-  Min_T: 660.0
+  T: 1700.0
+  Max_T: 60000.0
+  Min_T: 600.0
   S: 0.12
   Max_S: 0.2
   Min_S: 0.05
