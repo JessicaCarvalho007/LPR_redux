@@ -1,0 +1,17 @@
+metric,value
+n_members_attempted,174
+n_members_successful,174
+n_members_error,0
+max_ag_receipts_abs_diff,49.649860637262464
+max_ag_receipts_rel_diff,4.7232095872037674e-06
+max_fish_prob_abs_diff,4.940429674249458e-07
+strict_fish_dollars_validation_passed,False
+practical_fish_dollars_validation_passed,True
+historic_streamflow_cfs,8.6
+depletion_obs_name,lpr:total_combined:bdpl
+has_archive_depletion_values,True
+max_depletion_abs_diff_cfs,8.881784197001252e-16
+max_streamflow_abs_diff_cfs,1.7763568394002505e-15
+mean_effective_total_pumping_cfs,107.28840482241893
+mean_depletion_reeval_cfs,2.7055034724075155
+mean_streamflow_reeval_cfs,5.8944965275924845

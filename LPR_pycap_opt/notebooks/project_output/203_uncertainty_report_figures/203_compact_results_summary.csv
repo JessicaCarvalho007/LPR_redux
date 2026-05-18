@@ -1,0 +1,5 @@
+analysis,T_value,mean_streamflow_cfs,mean_depletion_cfs,mean_streamflow_change_from_baseline_cfs,mean_cost_metric_cfs,max_cost_metric_cfs,notes
+Known error: T -10%,1530.0,6.055205,2.544795,0.160708,0.0,0.0,Lower T gives less depletion and higher streamflow than baseline T. No streamflow shortfall relative to baseline.
+Known error: baseline T,1700.0,5.894497,2.705503,0.0,0.0,0.0,Reference case.
+Known error: T +10%,1870.0,5.743844,2.856156,-0.150653,0.150653,0.235821,Higher T gives more depletion and lower streamflow than baseline T. This is the one-sided known-error cost.
+Unknown T: probability-weighted distribution,1700.0,,,,0.055357,0.086574,Expected one-sided streamflow shortfall after weighting possible T values by probability.
