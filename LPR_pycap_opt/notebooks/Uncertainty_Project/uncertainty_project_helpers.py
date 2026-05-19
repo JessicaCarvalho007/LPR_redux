@@ -34,6 +34,12 @@ import matplotlib.pyplot as plt
 # Project-wide constants and editable plotting defaults
 # =============================================================================
 
+# Update this when changing shared helper behavior. The notebooks print this value
+# so it is easy to confirm that Python is importing the intended helper file, not
+# a stale/cached copy from another folder or kernel session.
+HELPER_VERSION = "2026-05-19_202_203_normal_distribution_plot_fix"
+
+
 GPM2CFS = 0.002228
 HISTORIC_STREAMFLOW_CFS = 8.6
 DEPLETION_OBS_NAME = "lpr:total_combined:bdpl"
@@ -64,11 +70,11 @@ SCENARIO_COLORS = {
     "baseline_T": "#2E86AB",
     "T_minus_10pct": "#3A923A",
     "T_plus_10pct": "#D1495B",
-    "expected": "#6A4C93",
+    "expected": "#E79AA5",  #9527F5
     "uncertainty_band": "#A6A6A6",
-    "original_baseline": "#2E86AB",
-    "original_T_minus_10pct": "#3A923A",
-    "original_T_plus_10pct": "#D1495B",
+    "original_baseline": "#8FC3DA",
+    "original_T_minus_10pct": "#8BCB8B",
+    "original_T_plus_10pct": "#E79AA5",
 }
 
 SCENARIO_LABELS = {
@@ -525,14 +531,51 @@ def make_wide_by_scenario(
 
 
 def add_known_T_error_metrics(results_long: pd.DataFrame, baseline_label: str = "baseline_T") -> pd.DataFrame:
-    """Add change/error/shortfall metrics relative to the baseline-T re-evaluation."""
+    """
+    Add change/error/shortfall metrics relative to a baseline-T re-evaluation.
+
+    This function is intentionally idempotent. It first removes any existing
+    baseline-relative metric columns, including pandas merge leftovers such as
+    *_x and *_y columns, before rebuilding the metrics. That makes it safe to
+    rerun notebook cells without restarting the kernel.
+    """
+    required_cols = {
+        "scenario", "member", "depletion_cfs", "streamflow_cfs",
+        "ag_receipts_reeval", "fish_prob_reeval",
+    }
+    missing = required_cols - set(results_long.columns)
+    if missing:
+        raise KeyError(
+            "Cannot add baseline-relative T metrics. Missing columns: "
+            f"{sorted(missing)}"
+        )
+
     if baseline_label not in set(results_long["scenario"]):
         raise KeyError(f"Expected baseline scenario label {baseline_label!r}.")
 
+    metric_base_cols = [
+        "baseline_T_depletion_cfs",
+        "baseline_T_streamflow_cfs",
+        "baseline_T_ag_receipts",
+        "baseline_T_fish_prob",
+        "depletion_change_from_baseline_cfs",
+        "streamflow_change_from_baseline_cfs",
+        "streamflow_error_cfs",
+        "absolute_streamflow_error_cfs",
+        "streamflow_shortfall_below_baseline_cfs",
+    ]
+
+    metric_cols_to_drop = [
+        c for c in results_long.columns
+        if any(c == base or c.startswith(f"{base}_") for base in metric_base_cols)
+    ]
+    clean = results_long.drop(columns=metric_cols_to_drop, errors="ignore").copy()
+
     baseline_by_member = (
-        results_long.loc[results_long["scenario"] == baseline_label, [
+        clean.loc[clean["scenario"] == baseline_label, [
             "member", "depletion_cfs", "streamflow_cfs", "ag_receipts_reeval", "fish_prob_reeval"
         ]]
+        .drop_duplicates("member")
         .rename(columns={
             "depletion_cfs": "baseline_T_depletion_cfs",
             "streamflow_cfs": "baseline_T_streamflow_cfs",
@@ -541,7 +584,7 @@ def add_known_T_error_metrics(results_long: pd.DataFrame, baseline_label: str = 
         })
     )
 
-    out = results_long.merge(baseline_by_member, on="member", how="left")
+    out = clean.merge(baseline_by_member, on="member", how="left")
     out["depletion_change_from_baseline_cfs"] = out["depletion_cfs"] - out["baseline_T_depletion_cfs"]
     out["streamflow_change_from_baseline_cfs"] = out["streamflow_cfs"] - out["baseline_T_streamflow_cfs"]
     # Positive error means streamflow is lower than the baseline-T prediction.
@@ -601,9 +644,29 @@ def make_discrete_normal_T_table(
 
 
 def weighted_quantile(values, weights, quantile: float) -> float:
-    """Compute a weighted quantile for 1-D arrays."""
+    """
+    Compute a weighted quantile for 1-D arrays.
+
+    This version is intentionally defensive because the probability notebook can
+    be re-run from cached CSVs. Cached files sometimes carry string/object dtypes
+    or missing values. We remove non-finite values and normalize the weights
+    before computing the quantile.
+    """
     values = np.asarray(values, dtype=float)
     weights = np.asarray(weights, dtype=float)
+
+    valid = np.isfinite(values) & np.isfinite(weights) & (weights >= 0)
+    values = values[valid]
+    weights = weights[valid]
+
+    if values.size == 0:
+        return np.nan
+
+    weight_sum = weights.sum()
+    if weight_sum <= 0:
+        return np.nan
+
+    weights = weights / weight_sum
     sorter = np.argsort(values)
     values = values[sorter]
     weights = weights[sorter]
@@ -620,12 +683,59 @@ def summarize_probability_weighted_members(
     Summarize probability-weighted uncertainty metrics for each Pareto member.
 
     Returns member_summary, scenario_summary, overall_summary.
+
+    Important implementation note
+    -----------------------------
+    This function is deliberately written to be robust to two common notebook
+    workflow issues:
+
+    1. Cached CSVs can reload numeric columns as object/string columns. We coerce
+       the key numeric columns before doing weighted calculations.
+    2. Newer pandas versions changed the behavior of groupby.apply(). We try the
+       newer include_groups=False call first and fall back to older behavior if
+       the installed pandas version does not support it.
     """
-    results = add_known_T_error_metrics(results_long, baseline_label="baseline_T") if "baseline_T" in set(results_long["scenario"]) else results_long.copy()
-    if "baseline_T_streamflow_cfs" not in results.columns:
-        # For arbitrary probability scenarios, use T_factor closest to 1.0 as baseline.
-        baseline_scen = results.assign(absdiff=(results["T_factor"] - 1.0).abs()).sort_values("absdiff")["scenario"].iloc[0]
-        results = add_known_T_error_metrics(results, baseline_label=baseline_scen)
+    if results_long.empty:
+        raise ValueError("results_long is empty; there are no probability scenarios to summarize.")
+
+    # Work on a copy so the caller's dataframe is not modified unexpectedly.
+    results = results_long.copy()
+
+    # The probability-weighted calculations need these columns to be numeric.
+    numeric_cols = [
+        "T_factor", "T_value", "probability_weight", "depletion_cfs", "streamflow_cfs",
+        "raw_total_pumping_cfs", "effective_total_pumping_cfs", "generation",
+        "baseline_T_streamflow_cfs", "baseline_T_depletion_cfs",
+        "streamflow_error_cfs", "absolute_streamflow_error_cfs",
+        "streamflow_shortfall_below_baseline_cfs",
+    ]
+    for col in numeric_cols:
+        if col in results.columns:
+            results[col] = pd.to_numeric(results[col], errors="coerce")
+
+    # Add baseline-relative metrics only if they are not already complete.
+    # This prevents duplicate *_x/*_y columns if a notebook cell already called
+    # add_known_T_error_metrics(), or if a cached dataframe already contains
+    # baseline-relative columns from a previous run.
+    required_metric_cols = {
+        "baseline_T_streamflow_cfs",
+        "baseline_T_depletion_cfs",
+        "streamflow_error_cfs",
+        "absolute_streamflow_error_cfs",
+        "streamflow_shortfall_below_baseline_cfs",
+    }
+    has_complete_baseline_metrics = required_metric_cols.issubset(results.columns)
+
+    if not has_complete_baseline_metrics:
+        if "baseline_T" in set(results["scenario"]):
+            results = add_known_T_error_metrics(results, baseline_label="baseline_T")
+        else:
+            baseline_scen = (
+                results.assign(absdiff=(results["T_factor"] - 1.0).abs())
+                .sort_values("absdiff")["scenario"]
+                .iloc[0]
+            )
+            results = add_known_T_error_metrics(results, baseline_label=baseline_scen)
 
     if streamflow_threshold_cfs is not None:
         results["streamflow_below_threshold"] = results["streamflow_cfs"] < streamflow_threshold_cfs
@@ -633,10 +743,22 @@ def summarize_probability_weighted_members(
         results["streamflow_below_threshold"] = False
 
     def summarize_member(group: pd.DataFrame) -> pd.Series:
+        # Convert each group to clean NumPy arrays. This avoids pandas index
+        # alignment surprises when using boolean masks with weight arrays.
         weights = group["probability_weight"].to_numpy(dtype=float)
-        weights = weights / weights.sum()
+        valid_weights = np.isfinite(weights) & (weights >= 0)
+        weights = np.where(valid_weights, weights, 0.0)
+        weight_sum = weights.sum()
+        if weight_sum <= 0:
+            raise ValueError(
+                "Probability weights sum to zero for a Pareto member. Check the T probability table."
+            )
+        weights = weights / weight_sum
+
         streamflow = group["streamflow_cfs"].to_numpy(dtype=float)
         depletion = group["depletion_cfs"].to_numpy(dtype=float)
+        baseline_streamflow = group["baseline_T_streamflow_cfs"].to_numpy(dtype=float)
+        baseline_depletion = group["baseline_T_depletion_cfs"].to_numpy(dtype=float)
         streamflow_error = group["streamflow_error_cfs"].to_numpy(dtype=float)
         abs_error = group["absolute_streamflow_error_cfs"].to_numpy(dtype=float)
         shortfall = group["streamflow_shortfall_below_baseline_cfs"].to_numpy(dtype=float)
@@ -645,10 +767,13 @@ def summarize_probability_weighted_members(
         expected_depletion = np.sum(weights * depletion)
         streamflow_variance = np.sum(weights * (streamflow - expected_streamflow) ** 2)
         depletion_variance = np.sum(weights * (depletion - expected_depletion) ** 2)
-        risk_lower_than_baseline = np.sum(weights[group["streamflow_cfs"] < group["baseline_T_streamflow_cfs"]])
+
+        lower_than_baseline_mask = streamflow < baseline_streamflow
+        risk_lower_than_baseline = np.sum(weights[lower_than_baseline_mask])
 
         if streamflow_threshold_cfs is not None:
-            risk_below_threshold = np.sum(weights[group["streamflow_below_threshold"].to_numpy(dtype=bool)])
+            threshold_mask = group["streamflow_below_threshold"].to_numpy(dtype=bool)
+            risk_below_threshold = np.sum(weights[threshold_mask])
         else:
             risk_below_threshold = np.nan
 
@@ -656,12 +781,12 @@ def summarize_probability_weighted_members(
             "generation": group["generation"].iloc[0],
             "raw_total_pumping_cfs": group["raw_total_pumping_cfs"].iloc[0],
             "effective_total_pumping_cfs": group["effective_total_pumping_cfs"].iloc[0],
-            "baseline_T_streamflow_cfs": group["baseline_T_streamflow_cfs"].iloc[0],
-            "baseline_T_depletion_cfs": group["baseline_T_depletion_cfs"].iloc[0],
+            "baseline_T_streamflow_cfs": baseline_streamflow[0],
+            "baseline_T_depletion_cfs": baseline_depletion[0],
             "expected_streamflow_cfs": expected_streamflow,
             "expected_depletion_cfs": expected_depletion,
-            "expected_streamflow_bias_from_baseline_cfs": expected_streamflow - group["baseline_T_streamflow_cfs"].iloc[0],
-            "expected_depletion_bias_from_baseline_cfs": expected_depletion - group["baseline_T_depletion_cfs"].iloc[0],
+            "expected_streamflow_bias_from_baseline_cfs": expected_streamflow - baseline_streamflow[0],
+            "expected_depletion_bias_from_baseline_cfs": expected_depletion - baseline_depletion[0],
             "streamflow_std_cfs": np.sqrt(streamflow_variance),
             "depletion_std_cfs": np.sqrt(depletion_variance),
             "streamflow_p05_cfs": weighted_quantile(streamflow, weights, 0.05),
@@ -673,13 +798,18 @@ def summarize_probability_weighted_members(
             "probability_weighted_absolute_streamflow_error_cfs": np.sum(weights * abs_error),
             "probability_weighted_streamflow_shortfall_cfs": np.sum(weights * shortfall),
             "probability_weighted_signed_streamflow_error_cfs": np.sum(weights * streamflow_error),
-            "max_absolute_streamflow_error_cfs": abs_error.max(),
-            "max_streamflow_shortfall_below_baseline_cfs": shortfall.max(),
+            "max_absolute_streamflow_error_cfs": np.nanmax(abs_error),
+            "max_streamflow_shortfall_below_baseline_cfs": np.nanmax(shortfall),
             "probability_streamflow_lower_than_baseline": risk_lower_than_baseline,
             "probability_streamflow_below_threshold": risk_below_threshold,
         })
 
-    member_summary = results.groupby("member", sort=False).apply(summarize_member).reset_index()
+    grouped = results.groupby("member", sort=False, group_keys=False)
+    try:
+        member_summary = grouped.apply(summarize_member, include_groups=False).reset_index()
+    except TypeError:
+        # Older pandas does not support include_groups.
+        member_summary = grouped.apply(summarize_member).reset_index()
 
     scenario_summary = (
         results.groupby(["scenario", "T_factor", "T_value", "probability_weight"], sort=False)
@@ -884,7 +1014,7 @@ def plot_archive_vs_reevaluated_front(
     if missing:
         raise KeyError(f"Cannot plot archive vs re-evaluated front. Missing columns: {missing}")
 
-    fig, ax = plt.subplots(figsize=(8.5, 5.5))
+    fig, ax = plt.subplots(figsize=(10, 6))
 
     archive_df = df[[x_archive, y_archive, "member"] if "member" in df.columns else [x_archive, y_archive]].dropna().copy()
     reeval_df = df[[x_reeval, y_reeval, "member"] if "member" in df.columns else [x_reeval, y_reeval]].dropna().copy()
@@ -904,6 +1034,7 @@ def plot_archive_vs_reevaluated_front(
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
     ax.set_title(title)
+    ax.grid(True, linestyle='--', color='gray', linewidth=1, alpha=0.3)
     ax.legend()
     save_figure(fig, outfile)
 
@@ -976,4 +1107,447 @@ def plot_original_mou_tradeoffs(
     ax.set_ylabel(ylabel)
     ax.set_title(title)
     ax.legend()
+    save_figure(fig, outfile)
+
+
+# =============================================================================
+# Additional probability-distribution and combined-figure helpers for notebook 202
+# =============================================================================
+
+def _normal_pdf(x, mean: float, sigma: float):
+    """Return the normal probability density function evaluated at x."""
+    x = np.asarray(x, dtype=float)
+    return (1.0 / (sigma * np.sqrt(2.0 * np.pi))) * np.exp(-0.5 * ((x - mean) / sigma) ** 2)
+
+
+def infer_sigma_fraction_from_probability_table(T_probability_table: pd.DataFrame) -> float:
+    """
+    Infer the sigma of the T-factor probability model from the saved probability table.
+
+    Preferred method:
+        use the relationship T_factor = 1 + z_score * sigma_fraction.
+
+    Fallback:
+        compute the weighted standard deviation of T_factor around 1.0 using the
+        discrete probability weights. This is robust even if z_score is absent.
+    """
+    table = T_probability_table.copy()
+    if "T_factor" not in table.columns:
+        raise KeyError("T_probability_table must contain 'T_factor'.")
+
+    table["T_factor"] = pd.to_numeric(table["T_factor"], errors="coerce")
+
+    if "z_score" in table.columns:
+        table["z_score"] = pd.to_numeric(table["z_score"], errors="coerce")
+        valid = table["z_score"].notna() & (table["z_score"] != 0) & table["T_factor"].notna()
+        if valid.any():
+            sigma_vals = ((table.loc[valid, "T_factor"] - 1.0).abs() / table.loc[valid, "z_score"].abs())
+            sigma_vals = sigma_vals.replace([np.inf, -np.inf], np.nan).dropna()
+            if not sigma_vals.empty:
+                return float(sigma_vals.median())
+
+    if "probability_weight" in table.columns:
+        weights = pd.to_numeric(table["probability_weight"], errors="coerce").fillna(0.0).to_numpy(dtype=float)
+        factors = table["T_factor"].to_numpy(dtype=float)
+        valid = np.isfinite(factors) & np.isfinite(weights) & (weights >= 0)
+        factors = factors[valid]
+        weights = weights[valid]
+        if factors.size > 0 and weights.sum() > 0:
+            weights = weights / weights.sum()
+            mean_factor = np.sum(weights * factors)
+            return float(np.sqrt(np.sum(weights * (factors - mean_factor) ** 2)))
+
+    raise ValueError("Could not infer sigma_fraction from T_probability_table.")
+
+
+def infer_n_sigma_each_side_from_probability_table(T_probability_table: pd.DataFrame, sigma_fraction: float | None = None) -> float:
+    """Infer the sampled +/-N sigma extent from the T-factor probability table."""
+    sigma_fraction = infer_sigma_fraction_from_probability_table(T_probability_table) if sigma_fraction is None else float(sigma_fraction)
+    table = T_probability_table.copy()
+    table["T_factor"] = pd.to_numeric(table["T_factor"], errors="coerce")
+    max_dev = float((table["T_factor"] - 1.0).abs().max())
+    if sigma_fraction <= 0:
+        raise ValueError("sigma_fraction must be positive.")
+    return max_dev / sigma_fraction
+
+
+def plot_T_probability_weights_with_curve(
+    T_probability_table: pd.DataFrame,
+    sigma_fraction: float | None,
+    outfile: str | Path,
+    title: str = "Discrete T probability weights with continuous normal curve",
+):
+    """
+    Plot discrete probability weights for sampled T factors with a bell-curve overlay.
+
+    The bars show the actual discrete weights used in the probability-weighted
+    PyCap runs. The smooth curve shows the corresponding continuous normal model.
+    For display only, the continuous curve is scaled to the probability-weight
+    axis so the shapes can be compared visually.
+    """
+    required = {"T_factor", "probability_weight"}
+    missing = required - set(T_probability_table.columns)
+    if missing:
+        raise KeyError(f"T_probability_table is missing required columns: {sorted(missing)}")
+
+    table = T_probability_table.sort_values("T_factor").copy()
+    table["T_factor"] = pd.to_numeric(table["T_factor"], errors="coerce")
+    table["probability_weight"] = pd.to_numeric(table["probability_weight"], errors="coerce")
+    table = table.dropna(subset=["T_factor", "probability_weight"])
+
+    factors = table["T_factor"].to_numpy(dtype=float)
+    weights = table["probability_weight"].to_numpy(dtype=float)
+
+    sigma_factor = infer_sigma_fraction_from_probability_table(table) if sigma_fraction is None else float(sigma_fraction)
+    mean_factor = 1.0
+
+    if len(factors) > 1:
+        dx = float(np.median(np.diff(factors)))
+    else:
+        dx = sigma_factor / 2.5 if sigma_factor > 0 else 0.025
+
+    x_left = min(factors.min(), mean_factor - 3.0 * sigma_factor)
+    x_right = max(factors.max(), mean_factor + 3.0 * sigma_factor)
+    x = np.linspace(x_left, x_right, 700)
+    pdf = _normal_pdf(x, mean_factor, sigma_factor)
+
+    # Convert density to approximate probability mass over one bar width so the
+    # continuous curve can share the bar-chart y-axis.
+    pdf_mass = pdf * dx
+
+    fig, ax = plt.subplots(figsize=(10.0, 6.0))
+    bar_width = dx * 0.72 if len(factors) > 1 else 0.025
+    ax.bar(
+        factors,
+        weights,
+        width=bar_width,
+        color="#A7C7E7",
+        edgecolor="0.35",
+        linewidth=0.9,
+        alpha=0.88,
+        label="Discrete T weights used in PyCap runs",
+        zorder=2,
+    )
+    ax.plot(
+        x,
+        pdf_mass,
+        color=SCENARIO_COLORS.get("expected", "#6A4C93"),
+        linewidth=2.4,
+        label="Normal bell curve, scaled to weights",
+        zorder=3,
+    )
+    ax.axvline(1.0, color="0.25", linestyle="--", linewidth=1.2, label="Baseline T", zorder=1)
+
+    ax.set_xlim(x_left - 0.01, x_right + 0.01)
+    ax.set_xlabel("T factor relative to baseline T")
+    ax.set_ylabel("Probability weight")
+    ax.set_title(title)
+    ax.legend(loc="best")
+
+    save_figure(fig, outfile)
+
+
+
+def plot_T_probability_shaded_sigma_regions(
+    sigma_fraction: float,
+    n_sigma_each_side: float,
+    outfile: str | Path,
+    title: str = "Normal probability model for T uncertainty",
+):
+    """
+    Plot the normal distribution for T factor with shaded sigma regions.
+
+    This is a teaching/interpretation figure. The shaded bands and interval
+    brackets are drawn in data coordinates, so the ±1σ and ±2σ annotations span
+    the correct T-factor ranges.
+    """
+    sigma = float(sigma_fraction)
+    max_sigma = max(float(n_sigma_each_side), 3.0)
+    x_min = 1.0 - max_sigma * sigma
+    x_max = 1.0 + max_sigma * sigma
+    x = np.linspace(x_min, x_max, 1200)
+    y = _normal_pdf(x, 1.0, sigma)
+    ymax = float(y.max())
+
+    fig, ax = plt.subplots(figsize=(10, 6.0))
+
+    intervals = [
+        (-3, -2, "#DCECF7", "2.1%"),
+        (-2, -1, "#BFDDF2", "13.6%"),
+        (-1, 0, "#8CC7E8", "34.1%"),
+        (0, 1, "#8CC7E8", "34.1%"),
+        (1, 2, "#BFDDF2", "13.6%"),
+        (2, 3, "#DCECF7", "2.1%"),
+    ]
+    for left_z, right_z, color, label in intervals:
+        left = 1.0 + left_z * sigma
+        right = 1.0 + right_z * sigma
+        mask = (x >= left) & (x <= right)
+        if mask.any():
+            ax.fill_between(x[mask], y[mask], color=color, alpha=0.95)
+            x_mid = (left + right) / 2.0
+            y_mid = _normal_pdf(x_mid, 1.0, sigma)
+            ax.text(x_mid, y_mid * 0.18, label, ha="center", va="center", fontsize=9)
+
+    ax.plot(x, y, color=SCENARIO_COLORS.get("expected", "#6A4C93"), linewidth=2.5)
+
+    z_ticks = [-3, -2, -1, 0, 1, 2, 3]
+    tick_positions = [1.0 + z * sigma for z in z_ticks]
+    tick_labels = [f"{z:+d}σ\n{pos:.2f}" if z != 0 else f"μ\n{1.0:.2f}" for z, pos in zip(z_ticks, tick_positions)]
+    ax.set_xticks(tick_positions)
+    ax.set_xticklabels(tick_labels)
+
+    for z, pos in zip(z_ticks, tick_positions):
+        line_alpha = 0.55 if abs(z) <= n_sigma_each_side else 0.15
+        ax.axvline(pos, color="0.45", linestyle=":" if z != 0 else "--", linewidth=1.1, alpha=line_alpha)
+
+    def draw_interval_bracket(ax, x0, x1, y_level, label, end_frac=0.045, text_pad_frac=0.012):
+        """Draw a clean data-coordinate bracket spanning x0 to x1 at y_level."""
+        end_h = ymax * end_frac
+        ax.plot([x0, x1], [y_level, y_level], color="0.4", lw=1.1)
+        ax.plot([x0, x0], [y_level, y_level - end_h], color="0.4", lw=1.1)
+        ax.plot([x1, x1], [y_level, y_level - end_h], color="0.4", lw=1.1)
+        ax.text((x0 + x1) / 2.0, y_level + ymax * text_pad_frac, label, ha="center", va="bottom", fontsize=10)
+
+    # Precise empirical-rule brackets.
+    draw_interval_bracket(ax, 1.0 - 1.0 * sigma, 1.0 + 1.0 * sigma, ymax * 1.04, "~68.2% within ±1σ")
+    draw_interval_bracket(ax, 1.0 - 2.0 * sigma, 1.0 + 2.0 * sigma, ymax * 1.22, "~95.4% within ±2σ")
+
+    ax.set_ylim(0, ymax * 1.38)
+    ax.set_xlabel("T factor relative to baseline T")
+    ax.set_ylabel("Probability density")
+    ax.set_title(title)
+    ax.text(
+        0.02,
+        0.96,
+        f"Mean T factor = 1.0\n1σ = ±{sigma_fraction:.0%}\nSampled range = ±{n_sigma_each_side:g}σ",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        bbox=dict(boxstyle="round,pad=0.35", facecolor="white", edgecolor="0.75", alpha=0.9),
+        fontsize=9,
+    )
+
+    save_figure(fig, outfile)
+
+
+
+def plot_probability_weighted_streamflow_dashboard(
+    sigma_fraction: float,
+    n_sigma_each_side: float,
+    outfile: str | Path,
+    title: str = "Normal probability model for T uncertainty",
+):
+    """
+    Plot the normal distribution for T factor with shaded sigma regions.
+
+    This is a teaching/interpretation figure. It shows how the chosen probability
+    model maps standard deviations onto T-factor space. For the current project
+    default, sigma_fraction=0.10 means one standard deviation is +/-10% in T, so
+    +/-2 sigma corresponds to T factors 0.8 to 1.2.
+    """
+    sigma = float(sigma_fraction)
+    max_sigma = max(float(n_sigma_each_side), 3.0)
+    x_min = 1.0 - max_sigma * sigma
+    x_max = 1.0 + max_sigma * sigma
+    x = np.linspace(x_min, x_max, 1000)
+    y = _normal_pdf(x, 1.0, sigma)
+
+    fig, ax = plt.subplots(figsize=(10., 6.0))
+
+    # Color sigma intervals symmetrically. The labels use the familiar empirical
+    # rule percentages to make the figure easier to connect to the uploaded
+    # examples: ~68% within +/-1 sigma, ~95% within +/-2 sigma, ~99.7% within +/-3.
+    intervals = [
+        (-3, -2, "#DCECF7", "2.1%"),
+        (-2, -1, "#BFDDF2", "13.6%"),
+        (-1, 0, "#8CC7E8", "34.1%"),
+        (0, 1, "#8CC7E8", "34.1%"),
+        (1, 2, "#BFDDF2", "13.6%"),
+        (2, 3, "#DCECF7", "2.1%"),
+    ]
+    for left_z, right_z, color, label in intervals:
+        left = 1.0 + left_z * sigma
+        right = 1.0 + right_z * sigma
+        mask = (x >= left) & (x <= right)
+        if mask.any():
+            ax.fill_between(x[mask], y[mask], color=color, alpha=0.95)
+            x_mid = (left + right) / 2.0
+            y_mid = _normal_pdf(x_mid, 1.0, sigma)
+            ax.text(x_mid, y_mid * 0.18, label, ha="center", va="center", fontsize=9)
+
+    ax.plot(x, y, color=SCENARIO_COLORS.get("expected", "#6A4C93"), linewidth=2.2)
+
+    # Mark baseline, +/-1 sigma, and +/-2 sigma clearly. These are the most
+    # important reference points for this project because the default sampled
+    # range is +/-2 sigma.
+    z_ticks = [-3, -2, -1, 0, 1, 2, 3]
+    tick_positions = [1.0 + z * sigma for z in z_ticks]
+    tick_labels = [f"{z:+d}σ\n{pos:.2f}" if z != 0 else f"μ\n{1.0:.2f}" for z, pos in zip(z_ticks, tick_positions)]
+    ax.set_xticks(tick_positions)
+    ax.set_xticklabels(tick_labels)
+
+    for z, pos in zip(z_ticks, tick_positions):
+        line_alpha = 0.55 if abs(z) <= n_sigma_each_side else 0.15
+        ax.axvline(pos, color="0.35", linestyle=":" if z != 0 else "--", linewidth=1.0, alpha=line_alpha)
+
+    # Brackets/annotations for the empirical-rule interpretation.
+    ymax = y.max()
+    ax.annotate("~68% within ±1σ", xy=(1.0, ymax * 1.03), xytext=(1.0, ymax * 1.16), ha="center",
+                arrowprops=dict(arrowstyle="-[,widthB=4.5,lengthB=0.7", lw=1.0, color="0.35"), fontsize=9)
+    ax.annotate("~95% within ±2σ", xy=(1.0, ymax * 1.22), xytext=(1.0, ymax * 1.34), ha="center",
+                arrowprops=dict(arrowstyle="-[,widthB=8.8,lengthB=0.7", lw=1.0, color="0.35"), fontsize=9)
+
+    ax.set_ylim(0, ymax * 1.42)
+    ax.set_xlabel("T factor relative to baseline T")
+    ax.set_ylabel("Probability density")
+    ax.set_title(title)
+    ax.text(
+        0.02,
+        0.96,
+        f"Mean T factor = 1.0\n1σ = ±{sigma_fraction:.0%}\nSampled range = ±{n_sigma_each_side:g}σ",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        bbox=dict(boxstyle="round,pad=0.35", facecolor="white", edgecolor="0.75", alpha=0.9),
+        fontsize=9,
+    )
+
+    save_figure(fig, outfile)
+
+
+def plot_probability_weighted_streamflow_dashboard(
+    member_summary: pd.DataFrame,
+    xcol: str,
+    outfile: str | Path,
+    title: str = "Probability-weighted streamflow uncertainty and cost metrics",
+):
+    """
+    Create a combined report figure for Notebook 202 / 203.
+
+    Layout:
+        - Left panel spans all 3 rows:
+            Expected streamflow with uncertainty band.
+        - Right top:
+            Probability-weighted absolute streamflow error.
+        - Right middle:
+            Probability-weighted streamflow shortfall.
+        - Right bottom:
+            Streamflow standard deviation.
+
+    This puts the main hydrologic prediction and the three uncertainty/cost
+    diagnostics into one report-ready figure.
+    """
+    required = {
+        xcol,
+        "baseline_T_streamflow_cfs",
+        "expected_streamflow_cfs",
+        "streamflow_p05_cfs",
+        "streamflow_p95_cfs",
+        "probability_weighted_absolute_streamflow_error_cfs",
+        "probability_weighted_streamflow_shortfall_cfs",
+        "streamflow_std_cfs",
+    }
+    missing = required - set(member_summary.columns)
+    if missing:
+        raise KeyError(f"member_summary is missing required columns: {sorted(missing)}")
+
+    plot_df = sort_for_plot(member_summary, xcol=xcol)
+    x = plot_df[xcol]
+
+    fig = plt.figure(figsize=(14.0, 9.0))
+
+    gs = fig.add_gridspec(
+        3,
+        2,
+        width_ratios=[1.65, 1.0],
+        height_ratios=[1.0, 1.0, 1.0],
+        wspace=0.30,
+        hspace=0.42,
+    )
+
+    ax_left = fig.add_subplot(gs[:, 0])
+    ax_top = fig.add_subplot(gs[0, 1])
+    ax_middle = fig.add_subplot(gs[1, 1], sharex=ax_top)
+    ax_bottom = fig.add_subplot(gs[2, 1], sharex=ax_top)
+
+    # -------------------------------------------------------------------------
+    # Left panel: main hydrologic prediction with uncertainty band
+    # -------------------------------------------------------------------------
+    ax_left.plot(
+        x,
+        plot_df["baseline_T_streamflow_cfs"],
+        linestyle="--",
+        color=SCENARIO_COLORS.get("baseline_T"),
+        label="Baseline-T prediction",
+    )
+
+    ax_left.plot(
+        x,
+        plot_df["expected_streamflow_cfs"],
+        color=SCENARIO_COLORS.get("expected"),
+        label="Probability-weighted expected streamflow",
+    )
+
+    ax_left.fill_between(
+        x,
+        plot_df["streamflow_p05_cfs"],
+        plot_df["streamflow_p95_cfs"],
+        color=SCENARIO_COLORS.get("uncertainty_band", "0.7"),
+        alpha=0.25,
+        label="Weighted 5th–95th percentile range",
+    )
+
+    ax_left.set_xlabel("Effective total pumping after fish-dollars cutoff (cfs)")
+    ax_left.set_ylabel("Streamflow = 8.6 cfs - depletion (cfs)")
+    ax_left.set_title("A. Expected streamflow with T uncertainty band")
+    ax_left.legend(loc="best")
+
+    # -------------------------------------------------------------------------
+    # Right top: absolute streamflow error
+    # -------------------------------------------------------------------------
+    ax_top.plot(
+        x,
+        plot_df["probability_weighted_absolute_streamflow_error_cfs"],
+        marker="o",
+        markersize=3,
+        color=SCENARIO_COLORS.get("expected"),
+    )
+
+    # ax_top.set_xlabel("Effective total pumping (cfs)")
+    ax_top.set_ylabel("Abs. streamflow error (cfs)")
+    ax_top.set_title("B. Probability-weighted absolute error")
+
+    # -------------------------------------------------------------------------
+    # Right middle: one-sided shortfall
+    # -------------------------------------------------------------------------
+    ax_middle.plot(
+        x,
+        plot_df["probability_weighted_streamflow_shortfall_cfs"],
+        marker="o",
+        markersize=3,
+        color=SCENARIO_COLORS.get("T_plus_10pct"),
+    )
+
+    # ax_middle.set_xlabel("Effective total pumping (cfs)")
+    ax_middle.set_ylabel("Streamflow shortfall (cfs)")
+    ax_middle.set_title("C. Probability-weighted streamflow shortfall")
+
+    # -------------------------------------------------------------------------
+    # Right bottom: streamflow standard deviation
+    # -------------------------------------------------------------------------
+    ax_bottom.plot(
+        x,
+        plot_df["streamflow_std_cfs"],
+        marker="o",
+        markersize=3,
+        color="0.35",
+    )
+
+    ax_bottom.set_xlabel("Effective total pumping (cfs)")
+    ax_bottom.set_ylabel("Streamflow std. dev. (cfs)")
+    ax_bottom.set_title("D. Streamflow standard deviation")
+
+    fig.suptitle(title, y=0.95, fontsize=PLOT_STYLE.get("axes.titlesize", 12) + 2)
+
     save_figure(fig, outfile)

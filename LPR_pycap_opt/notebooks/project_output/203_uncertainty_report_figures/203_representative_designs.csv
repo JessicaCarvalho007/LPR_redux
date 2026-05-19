@@ -1,6 +1,0 @@
-representative_design,member,effective_total_pumping_cfs,baseline_T_streamflow_cfs,baseline_T_depletion_cfs,expected_streamflow_cfs,streamflow_std_cfs,streamflow_p05_cfs,streamflow_p95_cfs,probability_weighted_absolute_streamflow_error_cfs,probability_weighted_streamflow_shortfall_cfs,max_streamflow_shortfall_below_baseline_cfs,distance_to_ideal
-lowest_pumping,gen=47_member=5907_pso,92.989031,7.175175,1.424825,7.177078,0.08231,7.024438,7.301003,0.066115,0.032106,0.170882,1.0
-highest_pumping,35,117.415657,3.805159,4.794841,3.812868,0.225284,3.402097,4.154954,0.180857,0.086574,0.455635,0.999265
-highest_streamflow,gen=47_member=5907_pso,92.989031,7.175175,1.424825,7.177078,0.08231,7.024438,7.301003,0.066115,0.032106,0.170882,1.0
-lowest_streamflow,56,117.275577,3.80268,4.79732,3.810298,0.224233,3.401268,4.150717,0.180017,0.086199,0.453765,1.000016
-normalized_compromise_knee,gen=32_member=3978_pso,108.89159,6.146686,2.453314,6.150878,0.133246,5.906973,6.352795,0.106992,0.0514,0.271133,0.463444
