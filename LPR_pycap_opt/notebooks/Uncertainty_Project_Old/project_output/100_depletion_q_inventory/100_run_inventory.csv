@@ -1,0 +1,4 @@
+scenario,scenario_label,T_multiplier,n_rows,n_columns,n_numeric_columns,n_well_q_columns,n_possible_total_pumping_cols,n_possible_streamflow_depletion_cols,first_possible_total_pumping_cols,first_possible_streamflow_depletion_cols
+baseline,Baseline T,1.0,8809,13,10,0,0,1,[],['lpr:total_combined:bdpl']
+T_minus_10,T -10%,0.9,9487,13,10,0,0,1,[],['lpr:total_combined:bdpl']
+T_plus_10,T +10%,1.1,9183,13,10,0,0,1,[],['lpr:total_combined:bdpl']
