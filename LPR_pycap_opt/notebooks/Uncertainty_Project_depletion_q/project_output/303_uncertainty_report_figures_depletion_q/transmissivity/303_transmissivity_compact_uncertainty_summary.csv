@@ -1,0 +1,5 @@
+analysis,parameter,parameter_value,mean_streamflow_cfs,mean_depletion_cfs,mean_streamflow_change_from_baseline_cfs,max_absolute_streamflow_error_cfs
+Known error: parameter -10%,transmissivity,1530.0,6.027577864760852,2.572422135239148,0.1764983828186394,0.2540793467091271
+Known error: baseline parameter,transmissivity,1700.0,5.851079481942212,2.748920518057788,0.0,0.0
+Known error: parameter +10%,transmissivity,1870.0,5.684937182020016,2.915062817979984,-0.1661422999221964,0.2356227641157264
+Unknown parameter: probability-weighted,transmissivity,,5.855447537778234,2.744552462221766,0.004368055836021673,0.1808046648891381

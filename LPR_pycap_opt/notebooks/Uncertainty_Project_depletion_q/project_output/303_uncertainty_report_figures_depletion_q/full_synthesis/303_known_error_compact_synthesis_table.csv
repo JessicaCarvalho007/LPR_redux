@@ -1,0 +1,7 @@
+analysis_group,parameter,scenario,mean_streamflow_change_cfs,mean_abs_streamflow_error_cfs,max_abs_streamflow_error_cfs,mean_streamflow_shortfall_cfs
+301a individual known error,transmissivity,T_minus_10pct,0.1764983828186394,0.1764983828186394,0.2540793467091271,0.0
+301a individual known error,transmissivity,baseline_T,0.0,0.0,0.0,0.0
+301a individual known error,transmissivity,T_plus_10pct,-0.1661422999221964,0.1661422999221964,0.2356227641157264,0.1661422999221964
+301a individual known error,storage,storage_minus_10pct,-0.1840140241573089,0.1840140241573089,0.2607338355409982,0.1840140241573089
+301a individual known error,storage,baseline_storage,0.0,0.0,0.0,0.0
+301a individual known error,storage,storage_plus_10pct,0.1599902090495342,0.1599902090495342,0.2301296705583135,0.0

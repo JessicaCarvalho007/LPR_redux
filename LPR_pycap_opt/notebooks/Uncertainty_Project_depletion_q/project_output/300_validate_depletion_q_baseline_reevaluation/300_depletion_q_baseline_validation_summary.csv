@@ -1,0 +1,12 @@
+metric,value
+n_members_attempted,296
+n_members_successful,296
+n_members_error,0
+max_pumping_objective_abs_diff_cfs,0.00011073094297131547
+max_depletion_abs_diff_cfs,4.972497019251065e-06
+max_streamflow_abs_diff_cfs_diagnostic,4.9724970185849315e-06
+pumping_objective_abs_tolerance_cfs,0.001
+depletion_abs_tolerance_cfs,1e-05
+pumping_objective_validation_passed,True
+depletion_validation_passed,True
+hydrologic_validation_passed,True

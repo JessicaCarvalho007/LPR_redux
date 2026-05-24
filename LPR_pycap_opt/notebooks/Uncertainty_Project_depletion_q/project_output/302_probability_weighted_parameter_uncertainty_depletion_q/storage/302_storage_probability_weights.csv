@@ -1,0 +1,12 @@
+parameter_name,parameter_label,parameter_symbol,scenario,z_score,parameter_factor,parameter_value,base_parameter_value,probability_weight
+storage,Storage,S,storage_zminus_2p00,-2.0,0.8,0.096,0.12,0.022190548492442997
+storage,Storage,S,storage_zminus_1p60,-1.6,0.84,0.10079999999999999,0.12,0.045588999785278535
+storage,Storage,S,storage_zminus_1p20,-1.2,0.88,0.1056,0.12,0.079811408240092
+storage,Storage,S,storage_zminus_0p80,-0.7999999999999998,0.92,0.1104,0.12,0.11906462996609925
+storage,Storage,S,storage_zminus_0p40,-0.3999999999999999,0.96,0.1152,0.12,0.15136080967773613
+storage,Storage,S,baseline_storage,0.0,1.0,0.12,0.12,0.16396720767670225
+storage,Storage,S,storage_zplus_0p40,0.40000000000000036,1.04,0.1248,0.12,0.1513608096777361
+storage,Storage,S,storage_zplus_0p80,0.8000000000000003,1.08,0.1296,0.12,0.1190646299660992
+storage,Storage,S,storage_zplus_1p20,1.2000000000000002,1.12,0.13440000000000002,0.12,0.07981140824009199
+storage,Storage,S,storage_zplus_1p60,1.6,1.1600000000000001,0.13920000000000002,0.12,0.045588999785278535
+storage,Storage,S,storage_zplus_2p00,2.0,1.2,0.144,0.12,0.022190548492442997
