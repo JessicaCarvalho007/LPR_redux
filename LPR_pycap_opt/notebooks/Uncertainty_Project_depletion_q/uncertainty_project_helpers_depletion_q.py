@@ -755,7 +755,7 @@ def plot_archive_vs_reevaluated_front(
     archive_df = df[[x_archive, y_archive]].dropna().sort_values(x_archive).copy()
     reeval_df = df[[x_reeval, y_reeval]].dropna().sort_values(x_reeval).copy()
 
-    ax.scatter(archive_df[x_archive], archive_df[y_archive], s=28, alpha=0.70,
+    ax.scatter(archive_df[x_archive], archive_df[y_archive], s=28, marker="D", edgecolors="black", alpha=0.70,
                color=SCENARIO_COLORS.get("archive"), label="Original archived front")
     ax.plot(archive_df[x_archive], archive_df[y_archive], alpha=0.85,
             color=SCENARIO_COLORS.get("archive"))

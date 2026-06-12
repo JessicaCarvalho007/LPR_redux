@@ -17,7 +17,7 @@ well_418:
   loc:
     x: 89.4839267
     y: 44.4430733
-  Q: 10.950000000000001
+  Q: 98.55
   pumping_days: 90
   stream_apportionment0:
     name: LPR:418
@@ -32,7 +32,7 @@ well_466:
   loc:
     x: 89.4939505
     y: 44.4611747
-  Q: 31.59
+  Q: 284.31
   pumping_days: 330
   stream_apportionment1:
     name: LPR:466
@@ -46,7 +46,7 @@ well_467:
   loc:
     x: 89.4939729
     y: 44.458573
-  Q: 29.689999999999998
+  Q: 267.21
   pumping_days: 330
   stream_apportionment2:
     name: LPR:467
@@ -116,7 +116,7 @@ well_798:
   loc:
     x: 89.4024383
     y: 44.39655
-  Q: 13.56
+  Q: 122.03999999999999
   pumping_days: 120
   stream_apportionment7:
     name: LPR:798
@@ -130,7 +130,7 @@ well_807:
   loc:
     x: 89.4828133
     y: 44.423235
-  Q: 8.26
+  Q: 74.34
   pumping_days: 90
   stream_apportionment8:
     name: LPR:807
@@ -144,7 +144,7 @@ well_850:
   loc:
     x: 89.4916477
     y: 44.5399703
-  Q: 10.72
+  Q: 96.48
   pumping_days: 120
   stream_apportionment9:
     name: LPR:850
@@ -172,7 +172,7 @@ well_1013:
   loc:
     x: 89.3453883
     y: 44.4873217
-  Q: 12.51
+  Q: 112.59
   pumping_days: 90
   stream_apportionment11:
     name: LPR:1013
@@ -186,7 +186,7 @@ well_1302:
   loc:
     x: 89.4539046
     y: 44.5813718
-  Q: 8.82
+  Q: 79.38000000000001
   pumping_days: 90
   stream_apportionment12:
     name: LPR:1302
@@ -200,7 +200,7 @@ well_1323:
   loc:
     x: 89.4508899
     y: 44.5219167
-  Q: 7.620000000000001
+  Q: 68.58
   pumping_days: 30
   stream_apportionment13:
     name: LPR:1323
@@ -214,7 +214,7 @@ well_1486:
   loc:
     x: 89.4608233
     y: 44.5039967
-  Q: 22.28
+  Q: 200.52
   pumping_days: 90
   stream_apportionment14:
     name: LPR:1486
@@ -228,7 +228,7 @@ well_1584:
   loc:
     x: 89.4647217
     y: 44.48
-  Q: 15.05
+  Q: 135.45000000000002
   pumping_days: 90
   stream_apportionment15:
     name: LPR:1584
@@ -242,7 +242,7 @@ well_1589:
   loc:
     x: 89.4091941
     y: 44.4051847
-  Q: 26.410000000000004
+  Q: 237.69000000000003
   pumping_days: 120
   stream_apportionment16:
     name: LPR:1589
@@ -256,7 +256,7 @@ well_1643:
   loc:
     x: 89.5335333
     y: 44.4174
-  Q: 11.450000000000001
+  Q: 103.05
   pumping_days: 90
   stream_apportionment17:
     name: LPR:1643
@@ -270,7 +270,7 @@ well_1683:
   loc:
     x: 89.4090453
     y: 44.3906543
-  Q: 26.060000000000002
+  Q: 234.54000000000002
   pumping_days: 150
   stream_apportionment18:
     name: LPR:1683
@@ -284,7 +284,7 @@ well_1860:
   loc:
     x: 89.4486378
     y: 44.5302783
-  Q: 19.57
+  Q: 176.13
   pumping_days: 120
   stream_apportionment19:
     name: LPR:1860
@@ -312,7 +312,7 @@ well_2750:
   loc:
     x: 89.4342333
     y: 44.40286
-  Q: 12.07
+  Q: 108.63000000000001
   pumping_days: 120
   stream_apportionment21:
     name: LPR:2750
@@ -326,7 +326,7 @@ well_2886:
   loc:
     x: 89.5194619
     y: 44.4399357
-  Q: 71.05
+  Q: 639.45
   pumping_days: 365
   stream_apportionment22:
     name: LPR:2886
@@ -340,7 +340,7 @@ well_3473:
   loc:
     x: 89.4487003
     y: 44.5484194
-  Q: 8.33
+  Q: 74.97
   pumping_days: 120
   stream_apportionment23:
     name: LPR:3473
@@ -396,7 +396,7 @@ well_23611:
   loc:
     x: 89.513486
     y: 44.493764
-  Q: 37.88
+  Q: 340.92
   pumping_days: 90
   stream_apportionment27:
     name: LPR:23611
@@ -410,7 +410,7 @@ well_23618:
   loc:
     x: 89.4718736
     y: 44.493311
-  Q: 25.39
+  Q: 228.51000000000002
   pumping_days: 90
   stream_apportionment28:
     name: LPR:23618
@@ -424,7 +424,7 @@ well_23620:
   loc:
     x: 89.352925
     y: 44.481885
-  Q: 34.97
+  Q: 314.73
   pumping_days: 90
   stream_apportionment29:
     name: LPR:23620
@@ -438,7 +438,7 @@ well_23627:
   loc:
     x: 89.48438
     y: 44.4757317
-  Q: 27.650000000000002
+  Q: 248.85
   pumping_days: 120
   stream_apportionment30:
     name: LPR:23627
@@ -452,7 +452,7 @@ well_23629:
   loc:
     x: 89.4903
     y: 44.4182
-  Q: 14.62
+  Q: 131.57999999999998
   pumping_days: 120
   stream_apportionment31:
     name: LPR:23629
@@ -466,7 +466,7 @@ well_23630:
   loc:
     x: 89.50305
     y: 44.41435
-  Q: 25.55
+  Q: 229.95000000000002
   pumping_days: 120
   stream_apportionment32:
     name: LPR:23630
@@ -480,7 +480,7 @@ well_23631:
   loc:
     x: 89.483435
     y: 44.42146
-  Q: 10.100000000000001
+  Q: 90.9
   pumping_days: 90
   stream_apportionment33:
     name: LPR:23631
@@ -494,7 +494,7 @@ well_23635:
   loc:
     x: 89.44373
     y: 44.57158
-  Q: 28.28
+  Q: 254.52
   pumping_days: 120
   stream_apportionment34:
     name: LPR:23635
@@ -508,7 +508,7 @@ well_23637:
   loc:
     x: 89.451285
     y: 44.547822
-  Q: 29.14
+  Q: 262.26
   pumping_days: 120
   stream_apportionment35:
     name: LPR:23637
@@ -522,7 +522,7 @@ well_23638:
   loc:
     x: 89.452977
     y: 44.473997
-  Q: 40.980000000000004
+  Q: 368.82
   pumping_days: 120
   stream_apportionment36:
     name: LPR:23638
@@ -536,7 +536,7 @@ well_23639:
   loc:
     x: 89.523704
     y: 44.442296
-  Q: 21.32
+  Q: 191.88
   pumping_days: 120
   stream_apportionment37:
     name: LPR:23639
@@ -550,7 +550,7 @@ well_23645:
   loc:
     x: 89.51537
     y: 44.464845
-  Q: 15.880000000000003
+  Q: 142.92000000000002
   pumping_days: 90
   stream_apportionment38:
     name: LPR:23645
@@ -564,7 +564,7 @@ well_23646:
   loc:
     x: 89.518877
     y: 44.460812
-  Q: 31.939999999999998
+  Q: 287.46
   pumping_days: 90
   stream_apportionment39:
     name: LPR:23646
@@ -578,7 +578,7 @@ well_23648:
   loc:
     x: 89.4437439
     y: 44.5697308
-  Q: 13.780000000000001
+  Q: 124.02000000000001
   pumping_days: 120
   stream_apportionment40:
     name: LPR:23648
@@ -592,7 +592,7 @@ well_23653:
   loc:
     x: 89.4984333
     y: 44.4651167
-  Q: 26.360000000000003
+  Q: 237.24000000000004
   pumping_days: 150
   stream_apportionment41:
     name: LPR:23653
@@ -606,7 +606,7 @@ well_23695:
   loc:
     x: 89.48518
     y: 44.40527
-  Q: 14.14
+  Q: 127.26
   pumping_days: 90
   stream_apportionment42:
     name: LPR:23695
@@ -620,7 +620,7 @@ well_23697:
   loc:
     x: 89.312333
     y: 44.463241
-  Q: 15.200000000000001
+  Q: 136.8
   pumping_days: 120
   stream_apportionment43:
     name: LPR:23697
@@ -634,7 +634,7 @@ well_23698:
   loc:
     x: 89.323426
     y: 44.467347
-  Q: 36.94
+  Q: 332.46
   pumping_days: 90
   stream_apportionment44:
     name: LPR:23698
@@ -648,7 +648,7 @@ well_23699:
   loc:
     x: 89.452978
     y: 44.568291
-  Q: 22.080000000000002
+  Q: 198.72000000000003
   pumping_days: 90
   stream_apportionment45:
     name: LPR:23699
@@ -662,7 +662,7 @@ well_23700:
   loc:
     x: 89.43619
     y: 44.56397
-  Q: 12.170000000000002
+  Q: 109.53
   pumping_days: 120
   stream_apportionment46:
     name: LPR:23700
@@ -690,7 +690,7 @@ well_23710:
   loc:
     x: 89.446687
     y: 44.394648
-  Q: 10.56
+  Q: 95.03999999999999
   pumping_days: 120
   stream_apportionment48:
     name: LPR:23710
@@ -704,7 +704,7 @@ well_23715:
   loc:
     x: 89.4512001
     y: 44.5358433
-  Q: 41.13
+  Q: 370.17
   pumping_days: 90
   stream_apportionment49:
     name: LPR:23715
@@ -718,7 +718,7 @@ well_23716:
   loc:
     x: 89.4537432
     y: 44.5377989
-  Q: 25.610000000000003
+  Q: 230.49000000000004
   pumping_days: 90
   stream_apportionment50:
     name: LPR:23716
@@ -732,7 +732,7 @@ well_23720:
   loc:
     x: 89.5388666
     y: 44.4495667
-  Q: 16.07
+  Q: 144.63
   pumping_days: 120
   stream_apportionment51:
     name: LPR:23720
@@ -746,7 +746,7 @@ well_23721:
   loc:
     x: 89.531509
     y: 44.442969
-  Q: 23.680000000000003
+  Q: 213.12
   pumping_days: 120
   stream_apportionment52:
     name: LPR:23721
@@ -774,7 +774,7 @@ well_23723:
   loc:
     x: 89.544048
     y: 44.431968
-  Q: 23.650000000000002
+  Q: 212.85
   pumping_days: 150
   stream_apportionment54:
     name: LPR:23723
@@ -788,7 +788,7 @@ well_23726:
   loc:
     x: 89.502886
     y: 44.403409
-  Q: 19.57
+  Q: 176.13
   pumping_days: 90
   stream_apportionment55:
     name: LPR:23726
@@ -802,7 +802,7 @@ well_23727:
   loc:
     x: 89.498025
     y: 44.407044
-  Q: 8.6
+  Q: 77.4
   pumping_days: 90
   stream_apportionment56:
     name: LPR:23727
@@ -816,7 +816,7 @@ well_23728:
   loc:
     x: 89.543655
     y: 44.421027
-  Q: 25.01
+  Q: 225.09
   pumping_days: 120
   stream_apportionment57:
     name: LPR:23728
@@ -830,7 +830,7 @@ well_23729:
   loc:
     x: 89.5336167
     y: 44.42115
-  Q: 24.46
+  Q: 220.14
   pumping_days: 120
   stream_apportionment58:
     name: LPR:23729
@@ -844,7 +844,7 @@ well_23751:
   loc:
     x: 89.5130881
     y: 44.4069236
-  Q: 21.41
+  Q: 192.69
   pumping_days: 90
   stream_apportionment59:
     name: LPR:23751
@@ -858,7 +858,7 @@ well_23752:
   loc:
     x: 89.4571
     y: 44.4685
-  Q: 29.6
+  Q: 266.40000000000003
   pumping_days: 90
   stream_apportionment60:
     name: LPR:23752
@@ -872,7 +872,7 @@ well_23753:
   loc:
     x: 89.4416
     y: 44.4626
-  Q: 30.82
+  Q: 277.38
   pumping_days: 90
   stream_apportionment61:
     name: LPR:23753
@@ -886,7 +886,7 @@ well_23754:
   loc:
     x: 89.4386811
     y: 44.576777
-  Q: 32.5
+  Q: 292.5
   pumping_days: 90
   stream_apportionment62:
     name: LPR:23754
@@ -900,7 +900,7 @@ well_23755:
   loc:
     x: 89.484141
     y: 44.461779
-  Q: 79.46000000000001
+  Q: 715.14
   pumping_days: 90
   stream_apportionment63:
     name: LPR:23755
@@ -914,7 +914,7 @@ well_23756:
   loc:
     x: 89.5104666
     y: 44.4015464
-  Q: 32.42
+  Q: 291.78
   pumping_days: 90
   stream_apportionment64:
     name: LPR:23756
@@ -928,7 +928,7 @@ well_23757:
   loc:
     x: 89.55422
     y: 44.42446
-  Q: 10.15
+  Q: 91.35000000000001
   pumping_days: 120
   stream_apportionment65:
     name: LPR:23757
@@ -942,7 +942,7 @@ well_23758:
   loc:
     x: 89.5489
     y: 44.4282
-  Q: 14.840000000000002
+  Q: 133.56
   pumping_days: 120
   stream_apportionment66:
     name: LPR:23758
@@ -956,7 +956,7 @@ well_23770:
   loc:
     x: 89.503372
     y: 44.479507
-  Q: 23.990000000000002
+  Q: 215.91
   pumping_days: 120
   stream_apportionment67:
     name: LPR:23770
@@ -970,7 +970,7 @@ well_23776:
   loc:
     x: 89.4836516
     y: 44.4142833
-  Q: 7.840000000000001
+  Q: 70.56
   pumping_days: 90
   stream_apportionment68:
     name: LPR:23776
@@ -984,7 +984,7 @@ well_23778:
   loc:
     x: 89.5131489
     y: 44.4141763
-  Q: 16.36
+  Q: 147.24
   pumping_days: 120
   stream_apportionment69:
     name: LPR:23778
@@ -998,7 +998,7 @@ well_23781:
   loc:
     x: 89.4834016
     y: 44.50182
-  Q: 45.06
+  Q: 405.54
   pumping_days: 90
   stream_apportionment70:
     name: LPR:23781
@@ -1012,7 +1012,7 @@ well_23790:
   loc:
     x: 89.5592
     y: 44.43905
-  Q: 27.580000000000002
+  Q: 248.22000000000003
   pumping_days: 120
   stream_apportionment71:
     name: LPR:23790
@@ -1026,7 +1026,7 @@ well_23791:
   loc:
     x: 89.5642667
     y: 44.4344833
-  Q: 20.490000000000002
+  Q: 184.41
   pumping_days: 120
   stream_apportionment72:
     name: LPR:23791
@@ -1040,7 +1040,7 @@ well_23794:
   loc:
     x: 89.503475
     y: 44.486715
-  Q: 21.730000000000004
+  Q: 195.57000000000002
   pumping_days: 150
   stream_apportionment73:
     name: LPR:23794
@@ -1068,7 +1068,7 @@ well_23798:
   loc:
     x: 89.4667383
     y: 44.4330083
-  Q: 16.930000000000003
+  Q: 152.37
   pumping_days: 90
   stream_apportionment75:
     name: LPR:23798
@@ -1082,7 +1082,7 @@ well_23800:
   loc:
     x: 89.4495907
     y: 44.493991
-  Q: 36.4
+  Q: 327.6
   pumping_days: 90
   stream_apportionment76:
     name: LPR:23800
@@ -1096,7 +1096,7 @@ well_23807:
   loc:
     x: 89.4543518
     y: 44.4075933
-  Q: 12.850000000000001
+  Q: 115.65
   pumping_days: 90
   stream_apportionment77:
     name: LPR:23807
@@ -1110,7 +1110,7 @@ well_23816:
   loc:
     x: 89.50335
     y: 44.4612667
-  Q: 14.940000000000001
+  Q: 134.46
   pumping_days: 150
   stream_apportionment78:
     name: LPR:23816
@@ -1124,7 +1124,7 @@ well_23818:
   loc:
     x: 89.4418
     y: 44.3906
-  Q: 28.260000000000005
+  Q: 254.34000000000003
   pumping_days: 90
   stream_apportionment79:
     name: LPR:23818
@@ -1138,7 +1138,7 @@ well_23820:
   loc:
     x: 89.5259233
     y: 44.4120884
-  Q: 8.690000000000001
+  Q: 78.21000000000001
   pumping_days: 120
   stream_apportionment80:
     name: LPR:23820
@@ -1166,7 +1166,7 @@ well_23836:
   loc:
     x: 89.4907397
     y: 44.4562691
-  Q: 56.86000000000001
+  Q: 511.74
   pumping_days: 120
   stream_apportionment82:
     name: LPR:23836
@@ -1180,7 +1180,7 @@ well_23837:
   loc:
     x: 89.4821333
     y: 44.4500167
-  Q: 24.17
+  Q: 217.53
   pumping_days: 120
   stream_apportionment83:
     name: LPR:23837
@@ -1194,7 +1194,7 @@ well_23846:
   loc:
     x: 89.4611817
     y: 44.52898
-  Q: 29.17
+  Q: 262.53
   pumping_days: 90
   stream_apportionment84:
     name: LPR:23846
@@ -1208,7 +1208,7 @@ well_23847:
   loc:
     x: 89.4723049
     y: 44.5079917
-  Q: 18.7
+  Q: 168.3
   pumping_days: 120
   stream_apportionment85:
     name: LPR:23847
@@ -1222,7 +1222,7 @@ well_23848:
   loc:
     x: 89.4619783
     y: 44.5109967
-  Q: 28.97
+  Q: 260.73
   pumping_days: 90
   stream_apportionment86:
     name: LPR:23848
@@ -1236,7 +1236,7 @@ well_23851:
   loc:
     x: 89.4958761
     y: 44.4487585
-  Q: 24.840000000000003
+  Q: 223.56
   pumping_days: 150
   stream_apportionment87:
     name: LPR:23851
@@ -1250,7 +1250,7 @@ well_23864:
   loc:
     x: 89.446372
     y: 44.425908
-  Q: 113.37
+  Q: 1020.33
   pumping_days: 90
   stream_apportionment88:
     name: LPR:23864
@@ -1264,7 +1264,7 @@ well_23865:
   loc:
     x: 89.513731
     y: 44.421295
-  Q: 26.700000000000003
+  Q: 240.3
   pumping_days: 150
   stream_apportionment89:
     name: LPR:23865
@@ -1278,7 +1278,7 @@ well_23866:
   loc:
     x: 89.446857
     y: 44.412715
-  Q: 17.77
+  Q: 159.93
   pumping_days: 120
   stream_apportionment90:
     name: LPR:23866
@@ -1292,7 +1292,7 @@ well_23867:
   loc:
     x: 89.4487697
     y: 44.5628156
-  Q: 33.02
+  Q: 297.18
   pumping_days: 90
   stream_apportionment91:
     name: LPR:23867
@@ -1306,7 +1306,7 @@ well_23868:
   loc:
     x: 89.450743
     y: 44.557575
-  Q: 41.650000000000006
+  Q: 374.85
   pumping_days: 90
   stream_apportionment92:
     name: LPR:23868
@@ -1320,7 +1320,7 @@ well_23869:
   loc:
     x: 89.440618
     y: 44.559608
-  Q: 16.81
+  Q: 151.29
   pumping_days: 90
   stream_apportionment93:
     name: LPR:23869
@@ -1334,7 +1334,7 @@ well_23870:
   loc:
     x: 89.440357
     y: 44.55673
-  Q: 20.5
+  Q: 184.5
   pumping_days: 90
   stream_apportionment94:
     name: LPR:23870
@@ -1348,7 +1348,7 @@ well_23876:
   loc:
     x: 89.492086
     y: 44.483603
-  Q: 19.76
+  Q: 177.84
   pumping_days: 150
   stream_apportionment95:
     name: LPR:23876
@@ -1362,7 +1362,7 @@ well_23881:
   loc:
     x: 89.5092767
     y: 44.5011067
-  Q: 13.100000000000001
+  Q: 117.9
   pumping_days: 120
   stream_apportionment96:
     name: LPR:23881
@@ -1376,7 +1376,7 @@ well_23883:
   loc:
     x: 89.395337
     y: 44.553729
-  Q: 58.95
+  Q: 530.5500000000001
   pumping_days: 120
   stream_apportionment97:
     name: LPR:23883
@@ -1390,7 +1390,7 @@ well_23886:
   loc:
     x: 89.4617367
     y: 44.407875
-  Q: 21.52
+  Q: 193.68
   pumping_days: 120
   stream_apportionment98:
     name: LPR:23886
@@ -1404,7 +1404,7 @@ well_23888:
   loc:
     x: 89.4619217
     y: 44.4530267
-  Q: 23.72
+  Q: 213.48
   pumping_days: 90
   stream_apportionment99:
     name: LPR:23888
@@ -1418,7 +1418,7 @@ well_23889:
   loc:
     x: 89.4618232
     y: 44.4515233
-  Q: 45.980000000000004
+  Q: 413.82
   pumping_days: 90
   stream_apportionment100:
     name: LPR:23889
@@ -1432,7 +1432,7 @@ well_23890:
   loc:
     x: 89.525886
     y: 44.406606
-  Q: 18.76
+  Q: 168.84
   pumping_days: 90
   stream_apportionment101:
     name: LPR:23890
@@ -1446,7 +1446,7 @@ well_23895:
   loc:
     x: 89.528504
     y: 44.424711
-  Q: 21.69
+  Q: 195.21
   pumping_days: 120
   stream_apportionment102:
     name: LPR:23895
@@ -1474,7 +1474,7 @@ well_23908:
   loc:
     x: 89.4621383
     y: 44.5150567
-  Q: 36.5
+  Q: 328.5
   pumping_days: 120
   stream_apportionment104:
     name: LPR:23908
@@ -1488,7 +1488,7 @@ well_23909:
   loc:
     x: 89.4619417
     y: 44.4417883
-  Q: 11.56
+  Q: 104.03999999999999
   pumping_days: 120
   stream_apportionment105:
     name: LPR:23909
@@ -1502,7 +1502,7 @@ well_23910:
   loc:
     x: 89.57041
     y: 44.43999
-  Q: 34.5
+  Q: 310.5
   pumping_days: 120
   stream_apportionment106:
     name: LPR:23910
@@ -1516,7 +1516,7 @@ well_23913:
   loc:
     x: 89.3101783
     y: 44.4744083
-  Q: 24.72
+  Q: 222.48
   pumping_days: 90
   stream_apportionment107:
     name: LPR:23913
@@ -1530,7 +1530,7 @@ well_23915:
   loc:
     x: 89.390554
     y: 44.557204
-  Q: 15.25
+  Q: 137.25
   pumping_days: 60
   stream_apportionment108:
     name: LPR:23915
@@ -1544,7 +1544,7 @@ well_23919:
   loc:
     x: 89.5207717
     y: 44.4849033
-  Q: 26.130000000000003
+  Q: 235.17000000000002
   pumping_days: 60
   stream_apportionment109:
     name: LPR:23919
@@ -1558,7 +1558,7 @@ well_23926:
   loc:
     x: 89.4411
     y: 44.54615
-  Q: 24.3
+  Q: 218.70000000000002
   pumping_days: 120
   stream_apportionment110:
     name: LPR:23926
@@ -1572,7 +1572,7 @@ well_23928:
   loc:
     x: 89.440871
     y: 44.443704
-  Q: 29.380000000000003
+  Q: 264.42
   pumping_days: 120
   stream_apportionment111:
     name: LPR:23928
@@ -1600,7 +1600,7 @@ well_23930:
   loc:
     x: 89.4743833
     y: 44.4386683
-  Q: 9.16
+  Q: 82.44
   pumping_days: 90
   stream_apportionment113:
     name: LPR:23930
@@ -1614,7 +1614,7 @@ well_23934:
   loc:
     x: 89.4777782
     y: 44.4861117
-  Q: 37.06
+  Q: 333.54
   pumping_days: 120
   stream_apportionment114:
     name: LPR:23934
@@ -1628,7 +1628,7 @@ well_23936:
   loc:
     x: 89.4723883
     y: 44.500775
-  Q: 23.82
+  Q: 214.38
   pumping_days: 120
   stream_apportionment115:
     name: LPR:23936
@@ -1642,7 +1642,7 @@ well_23937:
   loc:
     x: 89.486585
     y: 44.43928
-  Q: 18.34
+  Q: 165.06
   pumping_days: 120
   stream_apportionment116:
     name: LPR:23937
@@ -1656,7 +1656,7 @@ well_23939:
   loc:
     x: 89.4519934
     y: 44.4849817
-  Q: 32.99
+  Q: 296.90999999999997
   pumping_days: 150
   stream_apportionment117:
     name: LPR:23939
@@ -1670,7 +1670,7 @@ well_23942:
   loc:
     x: 89.569192
     y: 44.450185
-  Q: 13.290000000000001
+  Q: 119.61000000000001
   pumping_days: 60
   stream_apportionment118:
     name: LPR:23942
@@ -1684,7 +1684,7 @@ well_23944:
   loc:
     x: 89.3831776
     y: 44.4610719
-  Q: 8.440000000000001
+  Q: 75.96000000000001
   pumping_days: 90
   stream_apportionment119:
     name: LPR:23944
@@ -1698,7 +1698,7 @@ well_23948:
   loc:
     x: 89.459102
     y: 44.430905
-  Q: 25.46
+  Q: 229.14
   pumping_days: 150
   stream_apportionment120:
     name: LPR:23948
@@ -1712,7 +1712,7 @@ well_23956:
   loc:
     x: 89.431466
     y: 44.425741
-  Q: 42.900000000000006
+  Q: 386.1
   pumping_days: 90
   stream_apportionment121:
     name: LPR:23956
@@ -1726,7 +1726,7 @@ well_23961:
   loc:
     x: 89.304671
     y: 44.444118
-  Q: 27.05
+  Q: 243.45000000000002
   pumping_days: 90
   stream_apportionment122:
     name: LPR:23961
@@ -1740,7 +1740,7 @@ well_23962:
   loc:
     x: 89.438982
     y: 44.4244349
-  Q: 14.719999999999999
+  Q: 132.48
   pumping_days: 90
   stream_apportionment123:
     name: LPR:23962
@@ -1754,7 +1754,7 @@ well_23963:
   loc:
     x: 89.4492171
     y: 44.4036552
-  Q: 10.58
+  Q: 95.22
   pumping_days: 90
   stream_apportionment124:
     name: LPR:23963
@@ -1768,7 +1768,7 @@ well_23966:
   loc:
     x: 89.446933
     y: 44.399341
-  Q: 9.08
+  Q: 81.72
   pumping_days: 120
   stream_apportionment125:
     name: LPR:23966
@@ -1782,7 +1782,7 @@ well_23967:
   loc:
     x: 89.45906
     y: 44.4186883
-  Q: 23.150000000000002
+  Q: 208.35
   pumping_days: 60
   stream_apportionment126:
     name: LPR:23967
@@ -1796,7 +1796,7 @@ well_23972:
   loc:
     x: 89.574306
     y: 44.446411
-  Q: 32.31
+  Q: 290.79
   pumping_days: 120
   stream_apportionment127:
     name: LPR:23972
@@ -1810,7 +1810,7 @@ well_23977:
   loc:
     x: 89.456735
     y: 44.4415017
-  Q: 15.25
+  Q: 137.25
   pumping_days: 90
   stream_apportionment128:
     name: LPR:23977
@@ -1838,7 +1838,7 @@ well_23979:
   loc:
     x: 89.435924
     y: 44.556986
-  Q: 18.64
+  Q: 167.76000000000002
   pumping_days: 90
   stream_apportionment130:
     name: LPR:23979
@@ -1852,7 +1852,7 @@ well_23980:
   loc:
     x: 89.441812
     y: 44.405113
-  Q: 15.130000000000003
+  Q: 136.17000000000002
   pumping_days: 120
   stream_apportionment131:
     name: LPR:23980
@@ -1866,7 +1866,7 @@ well_23981:
   loc:
     x: 89.4908727
     y: 44.4451079
-  Q: 8.72
+  Q: 78.48
   pumping_days: 120
   stream_apportionment132:
     name: LPR:23981
@@ -1880,7 +1880,7 @@ well_23983:
   loc:
     x: 89.43967
     y: 44.535151
-  Q: 80.64
+  Q: 725.76
   pumping_days: 120
   stream_apportionment133:
     name: LPR:23983
@@ -1894,7 +1894,7 @@ well_23984:
   loc:
     x: 89.508318
     y: 44.427312
-  Q: 27.89
+  Q: 251.01
   pumping_days: 120
   stream_apportionment134:
     name: LPR:23984
@@ -1908,7 +1908,7 @@ well_23985:
   loc:
     x: 89.5161351
     y: 44.4375971
-  Q: 33.36000000000001
+  Q: 300.24
   pumping_days: 120
   stream_apportionment135:
     name: LPR:23985
@@ -1922,7 +1922,7 @@ well_23987:
   loc:
     x: 89.4640183
     y: 44.4206633
-  Q: 41.980000000000004
+  Q: 377.82
   pumping_days: 90
   stream_apportionment136:
     name: LPR:23987
@@ -1936,7 +1936,7 @@ well_23998:
   loc:
     x: 89.499075
     y: 44.541551
-  Q: 9.340000000000002
+  Q: 84.06
   pumping_days: 120
   stream_apportionment137:
     name: LPR:23998
@@ -1950,7 +1950,7 @@ well_24003:
   loc:
     x: 89.521496
     y: 44.428347
-  Q: 11.780000000000001
+  Q: 106.02
   pumping_days: 180
   stream_apportionment138:
     name: LPR:24003
@@ -1964,7 +1964,7 @@ well_24005:
   loc:
     x: 89.4415996
     y: 44.4336067
-  Q: 28.400000000000002
+  Q: 255.6
   pumping_days: 150
   stream_apportionment139:
     name: LPR:24005
@@ -1992,7 +1992,7 @@ well_24011:
   loc:
     x: 89.446966
     y: 44.491616
-  Q: 25.710000000000004
+  Q: 231.39000000000001
   pumping_days: 90
   stream_apportionment141:
     name: LPR:24011
@@ -2006,7 +2006,7 @@ well_24012:
   loc:
     x: 89.5337167
     y: 44.4103333
-  Q: 18.81
+  Q: 169.29
   pumping_days: 120
   stream_apportionment142:
     name: LPR:24012
@@ -2020,7 +2020,7 @@ well_24016:
   loc:
     x: 89.5590017
     y: 44.428235
-  Q: 24.91
+  Q: 224.19
   pumping_days: 120
   stream_apportionment143:
     name: LPR:24016
@@ -2034,7 +2034,7 @@ well_24024:
   loc:
     x: 89.431705
     y: 44.397279
-  Q: 16.169999999999998
+  Q: 145.53
   pumping_days: 90
   stream_apportionment144:
     name: LPR:24024
@@ -2048,7 +2048,7 @@ well_24030:
   loc:
     x: 89.451529
     y: 44.421802
-  Q: 22.6
+  Q: 203.4
   pumping_days: 90
   stream_apportionment145:
     name: LPR:24030
@@ -2062,7 +2062,7 @@ well_24033:
   loc:
     x: 89.4660267
     y: 44.4135367
-  Q: 26.72
+  Q: 240.48
   pumping_days: 120
   stream_apportionment146:
     name: LPR:24033
@@ -2076,7 +2076,7 @@ well_24036:
   loc:
     x: 89.441774
     y: 44.399726
-  Q: 20.14
+  Q: 181.26000000000002
   pumping_days: 120
   stream_apportionment147:
     name: LPR:24036
@@ -2104,7 +2104,7 @@ well_24042:
   loc:
     x: 89.4212312
     y: 44.4252779
-  Q: 26.310000000000002
+  Q: 236.79000000000002
   pumping_days: 90
   stream_apportionment149:
     name: LPR:24042
@@ -2118,7 +2118,7 @@ well_24043:
   loc:
     x: 89.431683
     y: 44.390087
-  Q: 11.14
+  Q: 100.26
   pumping_days: 120
   stream_apportionment150:
     name: LPR:24043
@@ -2132,7 +2132,7 @@ well_24045:
   loc:
     x: 89.504699
     y: 44.451194
-  Q: 20.480000000000004
+  Q: 184.32000000000002
   pumping_days: 150
   stream_apportionment151:
     name: LPR:24045
@@ -2146,7 +2146,7 @@ well_24047:
   loc:
     x: 89.4085538
     y: 44.4806706
-  Q: 9.15
+  Q: 82.35000000000001
   pumping_days: 90
   stream_apportionment152:
     name: LPR:24047
@@ -2160,7 +2160,7 @@ well_24049:
   loc:
     x: 89.4959753
     y: 44.441337
-  Q: 15.0
+  Q: 135.0
   pumping_days: 90
   stream_apportionment153:
     name: LPR:24049
@@ -2174,7 +2174,7 @@ well_24059:
   loc:
     x: 89.3919218
     y: 44.467435
-  Q: 11.18
+  Q: 100.62
   pumping_days: 90
   stream_apportionment154:
     name: LPR:24059
@@ -2188,7 +2188,7 @@ well_24063:
   loc:
     x: 89.490748
     y: 44.426807
-  Q: 8.1
+  Q: 72.9
   pumping_days: 90
   stream_apportionment155:
     name: LPR:24063
@@ -2216,7 +2216,7 @@ well_24080:
   loc:
     x: 89.456558
     y: 44.544285
-  Q: 16.44
+  Q: 147.96
   pumping_days: 90
   stream_apportionment157:
     name: LPR:24080
@@ -2230,7 +2230,7 @@ well_24091:
   loc:
     x: 89.4925199
     y: 44.4134667
-  Q: 8.89
+  Q: 80.01
   pumping_days: 90
   stream_apportionment158:
     name: LPR:24091
@@ -2272,7 +2272,7 @@ well_24120:
   loc:
     x: 89.524
     y: 44.3996783
-  Q: 27.110000000000003
+  Q: 243.99000000000004
   pumping_days: 60
   stream_apportionment161:
     name: LPR:24120
@@ -2286,7 +2286,7 @@ well_24121:
   loc:
     x: 89.488751
     y: 44.516402
-  Q: 8.0
+  Q: 72.0
   pumping_days: 90
   stream_apportionment162:
     name: LPR:24121
@@ -2300,7 +2300,7 @@ well_24125:
   loc:
     x: 89.4744583
     y: 44.4414267
-  Q: 15.57
+  Q: 140.13
   pumping_days: 120
   stream_apportionment163:
     name: LPR:24125
@@ -2314,7 +2314,7 @@ well_24130:
   loc:
     x: 89.517895
     y: 44.40333
-  Q: 28.230000000000004
+  Q: 254.07000000000002
   pumping_days: 90
   stream_apportionment164:
     name: LPR:24130
@@ -2328,7 +2328,7 @@ well_24135:
   loc:
     x: 89.5318484
     y: 44.5215254
-  Q: 6.76
+  Q: 60.839999999999996
   pumping_days: 150
   stream_apportionment165:
     name: LPR:24135
@@ -2342,7 +2342,7 @@ well_24137:
   loc:
     x: 89.5085
     y: 44.4871717
-  Q: 18.51
+  Q: 166.59
   pumping_days: 120
   stream_apportionment166:
     name: LPR:24137
@@ -2356,7 +2356,7 @@ well_24165:
   loc:
     x: 89.528813
     y: 44.428247
-  Q: 11.520000000000001
+  Q: 103.68
   pumping_days: 150
   stream_apportionment167:
     name: LPR:24165
@@ -2370,7 +2370,7 @@ well_24166:
   loc:
     x: 89.5336933
     y: 44.428355
-  Q: 11.530000000000001
+  Q: 103.77
   pumping_days: 120
   stream_apportionment168:
     name: LPR:24166
@@ -2384,7 +2384,7 @@ well_24169:
   loc:
     x: 89.412993
     y: 44.565916
-  Q: 14.76
+  Q: 132.84
   pumping_days: 90
   stream_apportionment169:
     name: LPR:24169
@@ -2398,7 +2398,7 @@ well_24172:
   loc:
     x: 89.4850534
     y: 44.429115
-  Q: 7.190000000000001
+  Q: 64.71000000000001
   pumping_days: 90
   stream_apportionment170:
     name: LPR:24172
@@ -2426,7 +2426,7 @@ well_24197:
   loc:
     x: 89.445139
     y: 44.4773
-  Q: 24.91
+  Q: 224.19
   pumping_days: 90
   stream_apportionment172:
     name: LPR:24197
@@ -2440,7 +2440,7 @@ well_24203:
   loc:
     x: 89.4936421
     y: 44.4943786
-  Q: 25.79
+  Q: 232.10999999999999
   pumping_days: 120
   stream_apportionment173:
     name: LPR:24203
@@ -2454,7 +2454,7 @@ well_24216:
   loc:
     x: 89.459285
     y: 44.565013
-  Q: 15.62
+  Q: 140.57999999999998
   pumping_days: 90
   stream_apportionment174:
     name: LPR:24216
@@ -2468,7 +2468,7 @@ well_24225:
   loc:
     x: 89.4493034
     y: 44.4394417
-  Q: 10.940000000000001
+  Q: 98.46000000000001
   pumping_days: 120
   stream_apportionment175:
     name: LPR:24225
@@ -2496,7 +2496,7 @@ well_24227:
   loc:
     x: 89.4717617
     y: 44.430535
-  Q: 12.26
+  Q: 110.34
   pumping_days: 120
   stream_apportionment177:
     name: LPR:24227
@@ -2510,7 +2510,7 @@ well_24239:
   loc:
     x: 89.498097
     y: 44.476295
-  Q: 27.150000000000002
+  Q: 244.35
   pumping_days: 120
   stream_apportionment178:
     name: LPR:24239
@@ -2538,7 +2538,7 @@ well_24247:
   loc:
     x: 89.477232
     y: 44.40939
-  Q: 6.550000000000001
+  Q: 58.95
   pumping_days: 90
   stream_apportionment180:
     name: LPR:24247
@@ -2580,7 +2580,7 @@ well_24253:
   loc:
     x: 89.4332
     y: 44.413782
-  Q: 13.280000000000001
+  Q: 119.52000000000001
   pumping_days: 60
   stream_apportionment183:
     name: LPR:24253
@@ -2594,7 +2594,7 @@ well_24256:
   loc:
     x: 89.5055255
     y: 44.4088605
-  Q: 6.3100000000000005
+  Q: 56.79
   pumping_days: 120
   stream_apportionment184:
     name: LPR:24256
@@ -2636,7 +2636,7 @@ well_24274:
   loc:
     x: 89.4569033
     y: 44.4812633
-  Q: 8.22
+  Q: 73.98
   pumping_days: 90
   stream_apportionment187:
     name: LPR:24274
@@ -2650,7 +2650,7 @@ well_24279:
   loc:
     x: 89.498
     y: 44.5135
-  Q: 10.23
+  Q: 92.07
   pumping_days: 90
   stream_apportionment188:
     name: LPR:24279
@@ -2664,7 +2664,7 @@ well_24283:
   loc:
     x: 89.5268943
     y: 44.5142424
-  Q: 40.54
+  Q: 364.86
   pumping_days: 150
   stream_apportionment189:
     name: LPR:24283
@@ -2678,7 +2678,7 @@ well_24285:
   loc:
     x: 89.459565
     y: 44.5780367
-  Q: 17.28
+  Q: 155.52
   pumping_days: 120
   stream_apportionment190:
     name: LPR:24285
@@ -2692,7 +2692,7 @@ well_24286:
   loc:
     x: 89.455222
     y: 44.574606
-  Q: 13.4
+  Q: 120.60000000000001
   pumping_days: 90
   stream_apportionment191:
     name: LPR:24286
@@ -2706,7 +2706,7 @@ well_24291:
   loc:
     x: 89.46693
     y: 44.44205
-  Q: 9.540000000000001
+  Q: 85.86000000000001
   pumping_days: 120
   stream_apportionment192:
     name: LPR:24291
@@ -2720,7 +2720,7 @@ well_24293:
   loc:
     x: 89.490886
     y: 44.4341774
-  Q: 6.83
+  Q: 61.47
   pumping_days: 90
   stream_apportionment193:
     name: LPR:24293
@@ -2734,7 +2734,7 @@ well_24294:
   loc:
     x: 89.4451833
     y: 44.5745367
-  Q: 10.840000000000002
+  Q: 97.56
   pumping_days: 120
   stream_apportionment194:
     name: LPR:24294
@@ -2748,7 +2748,7 @@ well_24302:
   loc:
     x: 89.4516667
     y: 44.595
-  Q: 15.52
+  Q: 139.68
   pumping_days: 60
   stream_apportionment195:
     name: LPR:24302
@@ -2776,7 +2776,7 @@ well_24307:
   loc:
     x: 89.439069
     y: 44.4389023
-  Q: 10.86
+  Q: 97.74
   pumping_days: 90
   stream_apportionment197:
     name: LPR:24307
@@ -2790,7 +2790,7 @@ well_24311:
   loc:
     x: 89.503322
     y: 44.427022
-  Q: 24.8
+  Q: 223.20000000000002
   pumping_days: 90
   stream_apportionment198:
     name: LPR:24311
@@ -2804,7 +2804,7 @@ well_24317:
   loc:
     x: 89.531895
     y: 44.5178655
-  Q: 5.95
+  Q: 53.550000000000004
   pumping_days: 150
   stream_apportionment199:
     name: LPR:24317
@@ -2818,7 +2818,7 @@ well_24323:
   loc:
     x: 89.5033
     y: 44.46495
-  Q: 20.64
+  Q: 185.76000000000002
   pumping_days: 90
   stream_apportionment200:
     name: LPR:24323
@@ -2832,7 +2832,7 @@ well_58403:
   loc:
     x: 89.4119
     y: 44.5033
-  Q: 13.92
+  Q: 125.27999999999999
   pumping_days: 240
   stream_apportionment201:
     name: LPR:58403
@@ -2846,7 +2846,7 @@ well_58405:
   loc:
     x: 89.5166274
     y: 44.4566635
-  Q: 41.800000000000004
+  Q: 376.2
   pumping_days: 365
   stream_apportionment202:
     name: LPR:58405
@@ -2860,7 +2860,7 @@ well_58406:
   loc:
     x: 89.559851
     y: 44.459032
-  Q: 41.64
+  Q: 374.76
   pumping_days: 365
   stream_apportionment203:
     name: LPR:58406
@@ -2874,7 +2874,7 @@ well_58407:
   loc:
     x: 89.5593768
     y: 44.4572966
-  Q: 40.64
+  Q: 365.76
   pumping_days: 365
   stream_apportionment204:
     name: LPR:58407
@@ -2888,7 +2888,7 @@ well_58410:
   loc:
     x: 89.4288288
     y: 44.4420326
-  Q: 21.53
+  Q: 193.77
   pumping_days: 240
   stream_apportionment205:
     name: LPR:58410
@@ -2902,7 +2902,7 @@ well_58411:
   loc:
     x: 89.4288357
     y: 44.4347801
-  Q: 6.940000000000001
+  Q: 62.46000000000001
   pumping_days: 210
   stream_apportionment206:
     name: LPR:58411
@@ -2944,7 +2944,7 @@ well_58424:
   loc:
     x: 89.4416317
     y: 44.4123767
-  Q: 12.11
+  Q: 108.99
   pumping_days: 210
   stream_apportionment209:
     name: LPR:58424
@@ -2958,7 +2958,7 @@ well_58433:
   loc:
     x: 89.4237384
     y: 44.4454054
-  Q: 30.04
+  Q: 270.36
   pumping_days: 270
   stream_apportionment210:
     name: LPR:58433
@@ -2986,7 +2986,7 @@ well_67673:
   loc:
     x: 89.48496
     y: 44.4162767
-  Q: 17.77
+  Q: 159.93
   pumping_days: 120
   stream_apportionment212:
     name: LPR:67673
@@ -3112,7 +3112,7 @@ well_68475:
   loc:
     x: 89.4241517
     y: 44.448735
-  Q: 57.75
+  Q: 519.75
   pumping_days: 240
   stream_apportionment221:
     name: LPR:68475
@@ -3126,7 +3126,7 @@ well_68529:
   loc:
     x: 89.4843333
     y: 44.4799167
-  Q: 21.990000000000002
+  Q: 197.91
   pumping_days: 120
   stream_apportionment222:
     name: LPR:68529
@@ -3154,7 +3154,7 @@ well_68695:
   loc:
     x: 89.4062167
     y: 44.4141167
-  Q: 51.78
+  Q: 466.02
   pumping_days: 90
   stream_apportionment224:
     name: LPR:68695
@@ -3182,7 +3182,7 @@ well_68917:
   loc:
     x: 89.3551667
     y: 44.4942667
-  Q: 17.05
+  Q: 153.45000000000002
   pumping_days: 90
   stream_apportionment226:
     name: LPR:68917
@@ -3210,7 +3210,7 @@ well_68926:
   loc:
     x: 89.4759667
     y: 44.5243833
-  Q: 12.100000000000001
+  Q: 108.9
   pumping_days: 60
   stream_apportionment228:
     name: LPR:68926
@@ -3252,7 +3252,7 @@ well_69282:
   loc:
     x: 89.4517334
     y: 44.4594333
-  Q: 15.62
+  Q: 140.57999999999998
   pumping_days: 90
   stream_apportionment231:
     name: LPR:69282
@@ -3280,7 +3280,7 @@ well_69289:
   loc:
     x: 89.3506383
     y: 44.4854167
-  Q: 13.51
+  Q: 121.59
   pumping_days: 90
   stream_apportionment233:
     name: LPR:69289
@@ -3294,7 +3294,7 @@ well_69480:
   loc:
     x: 89.3710368
     y: 44.473565
-  Q: 12.08
+  Q: 108.72
   pumping_days: 90
   stream_apportionment234:
     name: LPR:69480
@@ -3308,7 +3308,7 @@ well_69508:
   loc:
     x: 89.39497
     y: 44.59009
-  Q: 10.870000000000001
+  Q: 97.83
   pumping_days: 90
   stream_apportionment235:
     name: LPR:69508
@@ -3322,7 +3322,7 @@ well_69576:
   loc:
     x: 89.39602
     y: 44.5449
-  Q: 6.78
+  Q: 61.019999999999996
   pumping_days: 90
   stream_apportionment236:
     name: LPR:69576
@@ -3336,7 +3336,7 @@ well_69635:
   loc:
     x: 89.3347167
     y: 44.4977833
-  Q: 12.620000000000001
+  Q: 113.58
   pumping_days: 120
   stream_apportionment237:
     name: LPR:69635
@@ -3392,7 +3392,7 @@ well_69970:
   loc:
     x: 89.4983333
     y: 44.4767833
-  Q: 6.29
+  Q: 56.61
   pumping_days: 120
   stream_apportionment241:
     name: LPR:69970
@@ -3406,7 +3406,7 @@ well_69990:
   loc:
     x: 89.4851167
     y: 44.5344667
-  Q: 15.64
+  Q: 140.76000000000002
   pumping_days: 60
   stream_apportionment242:
     name: LPR:69990
@@ -3420,7 +3420,7 @@ well_70119:
   loc:
     x: 89.5073499
     y: 44.4900667
-  Q: 19.22
+  Q: 172.98
   pumping_days: 150
   stream_apportionment243:
     name: LPR:70119
@@ -3434,7 +3434,7 @@ well_70120:
   loc:
     x: 89.5023605
     y: 44.4973419
-  Q: 24.37
+  Q: 219.32999999999998
   pumping_days: 150
   stream_apportionment244:
     name: LPR:70120
@@ -3448,7 +3448,7 @@ well_70186:
   loc:
     x: 89.4619617
     y: 44.4840133
-  Q: 12.51
+  Q: 112.59
   pumping_days: 90
   stream_apportionment245:
     name: LPR:70186
@@ -3476,7 +3476,7 @@ well_70263:
   loc:
     x: 89.3295001
     y: 44.4795283
-  Q: 16.59
+  Q: 149.31
   pumping_days: 90
   stream_apportionment247:
     name: LPR:70263
@@ -3532,7 +3532,7 @@ well_70548:
   loc:
     x: 89.3590668
     y: 44.5576667
-  Q: 36.85
+  Q: 331.65000000000003
   pumping_days: 90
   stream_apportionment251:
     name: LPR:70548
@@ -3546,7 +3546,7 @@ well_70881:
   loc:
     x: 89.4237
     y: 44.4869333
-  Q: 16.94
+  Q: 152.46
   pumping_days: 150
   stream_apportionment252:
     name: LPR:70881
@@ -3560,7 +3560,7 @@ well_70961:
   loc:
     x: 89.3629834
     y: 44.4947667
-  Q: 6.640000000000001
+  Q: 59.760000000000005
   pumping_days: 90
   stream_apportionment253:
     name: LPR:70961
@@ -3602,7 +3602,7 @@ well_71044:
   loc:
     x: 89.49693
     y: 44.4836
-  Q: 6.38
+  Q: 57.42
   pumping_days: 120
   stream_apportionment256:
     name: LPR:71044
@@ -3630,7 +3630,7 @@ well_71063:
   loc:
     x: 89.4315666
     y: 44.43655
-  Q: 20.03
+  Q: 180.27
   pumping_days: 120
   stream_apportionment258:
     name: LPR:71063
@@ -3672,7 +3672,7 @@ well_71117:
   loc:
     x: 89.4117
     y: 44.3890167
-  Q: 35.6
+  Q: 320.40000000000003
   pumping_days: 90
   stream_apportionment261:
     name: LPR:71117
@@ -3686,7 +3686,7 @@ well_71156:
   loc:
     x: 89.4942333
     y: 44.5455167
-  Q: 23.22
+  Q: 208.98
   pumping_days: 120
   stream_apportionment262:
     name: LPR:71156
@@ -3742,7 +3742,7 @@ well_71998:
   loc:
     x: 89.33463
     y: 44.48317
-  Q: 19.36
+  Q: 174.24
   pumping_days: 90
   stream_apportionment266:
     name: LPR:71998
@@ -3798,7 +3798,7 @@ well_72269:
   loc:
     x: 89.456695
     y: 44.42724
-  Q: 13.090000000000002
+  Q: 117.81
   pumping_days: 150
   stream_apportionment270:
     name: LPR:72269
@@ -3854,7 +3854,7 @@ well_72422:
   loc:
     x: 89.3882783
     y: 44.5955283
-  Q: 24.1
+  Q: 216.9
   pumping_days: 60
   stream_apportionment274:
     name: LPR:72422
@@ -3882,7 +3882,7 @@ well_72437:
   loc:
     x: 89.3883834
     y: 44.44745
-  Q: 9.740000000000002
+  Q: 87.66000000000001
   pumping_days: 60
   stream_apportionment276:
     name: LPR:72437
@@ -3896,7 +3896,7 @@ well_72607:
   loc:
     x: 89.45185
     y: 44.4341
-  Q: 7.13
+  Q: 64.17
   pumping_days: 90
   stream_apportionment277:
     name: LPR:72607
@@ -3966,7 +3966,7 @@ well_73153:
   loc:
     x: 89.3752168
     y: 44.5109667
-  Q: 5.86
+  Q: 52.74
   pumping_days: 90
   stream_apportionment282:
     name: LPR:73153
@@ -3980,7 +3980,7 @@ well_73262:
   loc:
     x: 89.290945
     y: 44.4615
-  Q: 9.0
+  Q: 81.0
   pumping_days: 90
   stream_apportionment283:
     name: LPR:73262
@@ -4008,7 +4008,7 @@ well_73281:
   loc:
     x: 89.4789501
     y: 44.5231833
-  Q: 12.8
+  Q: 115.2
   pumping_days: 60
   stream_apportionment285:
     name: LPR:73281
@@ -4036,7 +4036,7 @@ well_73440:
   loc:
     x: 89.4059
     y: 44.4189
-  Q: 7.290000000000001
+  Q: 65.61000000000001
   pumping_days: 90
   stream_apportionment287:
     name: LPR:73440
@@ -4050,7 +4050,7 @@ well_73481:
   loc:
     x: 89.4648833
     y: 44.4224
-  Q: 8.51
+  Q: 76.59
   pumping_days: 120
   stream_apportionment288:
     name: LPR:73481
@@ -4064,7 +4064,7 @@ well_73715:
   loc:
     x: 89.4443333
     y: 44.4828
-  Q: 6.420000000000001
+  Q: 57.78
   pumping_days: 120
   stream_apportionment289:
     name: LPR:73715
@@ -4106,7 +4106,7 @@ well_73762:
   loc:
     x: 89.431
     y: 44.4871
-  Q: 17.59
+  Q: 158.31
   pumping_days: 150
   stream_apportionment292:
     name: LPR:73762
@@ -4148,7 +4148,7 @@ well_73942:
   loc:
     x: 89.3999333
     y: 44.43299
-  Q: 6.2
+  Q: 55.800000000000004
   pumping_days: 30
   stream_apportionment295:
     name: LPR:73942
@@ -4162,7 +4162,7 @@ well_74131:
   loc:
     x: 89.34489
     y: 44.4864
-  Q: 12.490000000000002
+  Q: 112.41000000000001
   pumping_days: 120
   stream_apportionment296:
     name: LPR:74131
@@ -4232,7 +4232,7 @@ well_91103:
   loc:
     x: 89.3868
     y: 44.4022
-  Q: 12.780000000000001
+  Q: 115.02
   pumping_days: 120
   stream_apportionment301:
     name: LPR:91103
@@ -4246,7 +4246,7 @@ well_91173:
   loc:
     x: 89.4335
     y: 44.5363
-  Q: 6.28
+  Q: 56.519999999999996
   pumping_days: 60
   stream_apportionment302:
     name: LPR:91173
@@ -4288,7 +4288,7 @@ well_91997:
   loc:
     x: 89.3377
     y: 44.4555
-  Q: 28.77
+  Q: 258.93
   pumping_days: 120
   stream_apportionment305:
     name: LPR:91997
@@ -4316,7 +4316,7 @@ well_92184:
   loc:
     x: 89.4421
     y: 44.4113
-  Q: 15.31
+  Q: 137.79
   pumping_days: 240
   stream_apportionment307:
     name: LPR:92184
@@ -4330,7 +4330,7 @@ well_92299:
   loc:
     x: 89.31969
     y: 44.45668
-  Q: 9.3
+  Q: 83.7
   pumping_days: 30
   stream_apportionment308:
     name: LPR:92299
@@ -4386,7 +4386,7 @@ well_92743:
   loc:
     x: 89.301241
     y: 44.463364
-  Q: 12.65
+  Q: 113.85000000000001
   pumping_days: 90
   stream_apportionment312:
     name: LPR:92743
@@ -4400,7 +4400,7 @@ well_92808:
   loc:
     x: 89.3837
     y: 44.5422
-  Q: 5.34
+  Q: 48.06
   pumping_days: 90
   stream_apportionment313:
     name: LPR:92808
@@ -4526,7 +4526,7 @@ well_93469:
   loc:
     x: 89.4464
     y: 44.4697
-  Q: 15.82
+  Q: 142.38
   pumping_days: 60
   stream_apportionment322:
     name: LPR:93469
@@ -4554,7 +4554,7 @@ well_94302:
   loc:
     x: 89.4835
     y: 44.4976
-  Q: 14.89
+  Q: 134.01000000000002
   pumping_days: 120
   stream_apportionment324:
     name: LPR:94302
