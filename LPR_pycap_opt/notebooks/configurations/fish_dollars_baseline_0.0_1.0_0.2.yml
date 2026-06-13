@@ -1,7 +1,0 @@
-depletion_potential_threshold: 0.2
-objectives: fish_dollars
-pump_lbound_fraction: 0.0
-pump_ubound_fraction: 1.0
-ref_q: 8.6
-run_path: ../pycap_runs/pycap_pest/run_fish_dollars_baseline_0.0_1.0_0.2
-scenario_name: fish_dollars_baseline_0.0_1.0_0.2

@@ -1,4 +1,0 @@
-scenario,n_well_q_cols,q_total_from_wells_available,top_total_pumping_candidates,top_streamflow_depletion_candidates
-baseline,0,False,[],['lpr:total_combined:bdpl']
-T_minus_10,0,False,[],['lpr:total_combined:bdpl']
-T_plus_10,0,False,[],['lpr:total_combined:bdpl']

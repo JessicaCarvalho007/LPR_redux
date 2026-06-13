@@ -1,4 +1,0 @@
-scenario,label,T_multiplier,run_dir_exists,summary_file_exists,summary_file_size_MB,summary_file
-baseline,Baseline T,1.0,True,True,0.106,pycap_runs/pycap_pest/run_depletion_q_baseline_0.0_1.0_0.01/depletion_q_baseline_0.0_1.0_0.01.pareto.archive.summary.csv.zip
-T_minus_10,T -10%,0.9,True,True,0.113,pycap_runs/pycap_pest/run_depletion_q_Tmin10per_0.0_1.0_0.01/depletion_q_Tmin10per_0.0_1.0_0.01.pareto.archive.summary.csv.zip
-T_plus_10,T +10%,1.1,True,True,0.111,pycap_runs/pycap_pest/run_depletion_q_Tplus10per_0.0_1.0_0.01/depletion_q_Tplus10per_0.0_1.0_0.01.pareto.archive.summary.csv.zip
