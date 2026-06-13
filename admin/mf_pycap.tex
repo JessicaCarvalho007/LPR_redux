@@ -1,0 +1,55 @@
+\documentclass[]{article}
+
+\usepackage{natbib} % Supports citation styles in BibTeX.
+% Title Page
+\title{Comparing pycap and MODFLOW}
+\author{Mike Fienen, USGS Upper Midwest Water Science Center}
+
+
+\begin{document}
+\maketitle
+
+\section{Governing equations for MODFLOW}
+The governing equation for groundwater flow, as implemented in MODFLOW and summarized from \citep{mf6a}, is based on Darcy's Law:
+\begin{equation}
+\mathbf{q}=-\mathbf{K}\nabla h=-\left(\begin{array}{ccc}
+K_{xx} & 0 & 0\\
+0 & K_{yy} & 0\\
+0 & 0 & K_{zz}
+\end{array}\right)
+\nabla h
+\end{equation}
+
+where $\mathbf{q}$ is specific discharge, $\mathbf{K}$ is the hydraulic conductivity tensor, here only defined in the principal $x$, $y$, and $z$ directions, and $h$ is potentiometric head. 
+Expressing this as a water balance on a small control volume (for instance, a single model cell) this can be expressed as a partial differential equation
+
+\begin{equation}
+\frac{\partial}{\partial x}\left(K_{xx}\frac{\partial h}{\partial x}\right)+\frac{\partial}{\partial y}\left(K_{yy}\frac{\partial h}{\partial y}\right)+\frac{\partial}{\partial z}\left(K_{zz}\frac{\partial h}{\partial z}\right)+\sum_{s}Q_{s}'=SS\frac{\partial h}{\partial t}
+\end{equation}
+where $\sum_{s}Q_{s}'$ is the sum of all sources and sinks (e.g. boundary conditions) acting on a cell, with the convention of negative sign denoting flow out of the control volume, and positive sign denoting flow into the control volume. $SS$ is the specific storage, and $t$ is time.
+
+This control volume is applied to a three-dimensional grid of cells where $Q_{s}'$ represents both external sources and sinks representing boundary conditions and also the flow between adjacent model cells. 
+
+To evaluate streamflow depletion, the groundwater system must be simulated with MODFLOW by first creating a grid that represents the geometry of an area, supplying values for properties such as $K_{xx}$, $K_{yy}$, $K_{zz}$, and $SS$ and boundary conditions (including wells, streams, and others). 
+
+\section{Governing equations for pycap}
+The pycap software supports multiple solutions for calculating the depletion of streamflow due to pumping in a well. The solution used in this class exercise is the Glover equation \citep{Glover_1954}.
+\begin{equation}
+s = Q_w \times \textrm{erfc} \left( \frac{d}{\sqrt{4\frac{T}{S}t}} \right)
+\end{equation}
+where $s$ is streamflow depletion, $Q_w$ is the well pumping rate, $\textrm{erfc}$ is the
+complementary error function, $d$ is the minimum distance
+from the well to the stream, $T$ is aquifer
+transmissivity, $S$ is aquifer storage, and $t$ is time from starting of pumping. 
+
+\section{Questions to consider}
+\begin{enumerate}
+\item In the Little Plover River MODFLOW model, what kinds of boundary conditions are represented by the $Q'_s$ terms? How do these interact with streamflow depletion?
+\item What terms are common to the two formulations? What terms are distinct to one or the other?
+\item Based on the differences in the formulations, do you expect them to result in the same calculations of depletion?
+\item How is distance considered in the two formulations?
+\end{enumerate}
+
+ \bibliographystyle{apalike} 
+ \bibliography{refs} 
+\end{document}
