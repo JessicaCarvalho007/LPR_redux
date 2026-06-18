@@ -27,6 +27,9 @@ dependencies:
 - xlrd
 - openpyxl
 - requests
+- contextily 
+- rasterio
+- seaborn
 - dash
 - pytest
 - pycap-dss>=1.1.1
